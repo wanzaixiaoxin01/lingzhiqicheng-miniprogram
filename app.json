@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/courses/index",
+    "pages/course-detail/index",
+    "pages/campuses/index",
+    "pages/campus-detail/index",
+    "pages/appointment/index",
+    "pages/articles/index",
+    "pages/article-detail/index",
+    "pages/growth/index",
+    "pages/profile/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "灵智启程",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#eef4fa"
+  },
+  "tabBar": {
+    "color": "#8a96a5",
+    "selectedColor": "#1168df",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/courses/index",
+        "text": "课程"
+      },
+      {
+        "pagePath": "pages/growth/index",
+        "text": "成长"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  }
+}

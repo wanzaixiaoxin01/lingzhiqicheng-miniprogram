@@ -1,0 +1,7 @@
+<view class="page">
+  <view class="card article-card">
+    <text class="title">{{article.title || '内容详情'}}</text>
+    <text class="muted">{{article.summary}}</text>
+    <text class="content">{{article.content}}</text>
+  </view>
+</view>

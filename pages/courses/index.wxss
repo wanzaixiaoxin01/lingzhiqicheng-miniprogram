@@ -1,0 +1,5 @@
+.section-title { font-size: 38rpx; font-weight: 900; }
+.course-card { margin-top: 24rpx; padding: 28rpx; }
+.muted { display: block; margin-top: 10rpx; color: #66758a; }
+.category-row { display: flex; gap: 16rpx; margin-top: 20rpx; overflow-x: auto; }
+.category { padding: 14rpx 22rpx; border-radius: 14rpx; background: #edf7ff; color: #1168df; font-weight: 700; white-space: nowrap; }

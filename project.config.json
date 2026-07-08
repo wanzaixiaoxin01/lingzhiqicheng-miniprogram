@@ -1,0 +1,12 @@
+{
+  "appid": "wx2b385182e09031fe",
+  "projectname": "lingzhi-qicheng-miniprogram",
+  "compileType": "miniprogram",
+  "miniprogramRoot": "./",
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true
+  }
+}

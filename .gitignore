@@ -1,0 +1,14 @@
+.DS_Store
+node_modules/
+miniprogram_npm/
+dist/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# WeChat DevTools local cache
+.idea/
+.vscode/
+*.local

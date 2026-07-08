@@ -1,0 +1,10 @@
+<view class="page">
+  <view class="card detail-card">
+    <text class="title">{{course.title || '课程详情'}}</text>
+    <text class="muted">{{course.summary}}</text>
+    <text class="muted">适合年级：{{course.suitable_grade || '请咨询校区'}}</text>
+    <text class="muted">服务周期：{{course.service_period || '请咨询校区'}}</text>
+    <text class="content">{{course.content}}</text>
+    <button class="primary-button" bindtap="goAppointment">预约试听</button>
+  </view>
+</view>

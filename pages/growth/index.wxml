@@ -1,0 +1,7 @@
+<view class="page">
+  <view class="card growth-card">
+    <text class="title">成长中心</text>
+    <text class="muted">一期展示孩子信息、预约记录和学习资料入口。</text>
+    <button class="primary-button" bindtap="goAppointment">预约体验</button>
+  </view>
+</view>

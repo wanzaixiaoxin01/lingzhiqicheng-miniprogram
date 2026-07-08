@@ -1,0 +1,10 @@
+<view class="page">
+  <view class="section-title">课程服务</view>
+  <view class="category-row">
+    <text wx:for="{{categories}}" wx:key="*this" data-value="{{item}}" bindtap="selectCategory" class="category">{{item}}</text>
+  </view>
+  <view class="card course-card" wx:for="{{courses}}" wx:key="id" data-id="{{item.id}}" bindtap="goDetail">
+    <text>{{item.title}}</text>
+    <text class="muted">{{item.summary}}</text>
+  </view>
+</view>

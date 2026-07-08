@@ -1,0 +1,69 @@
+.hero {
+  min-height: 320rpx;
+  border-radius: 20rpx;
+  padding: 34rpx;
+  color: white;
+  background: linear-gradient(135deg, #071a34, #1168df 58%, #20c7e8);
+}
+
+.eyebrow,
+.title,
+.subtitle {
+  display: block;
+}
+
+.eyebrow {
+  font-size: 22rpx;
+  opacity: .78;
+  font-weight: 700;
+}
+
+.title {
+  margin-top: 28rpx;
+  font-size: 44rpx;
+  line-height: 1.18;
+  font-weight: 900;
+}
+
+.subtitle {
+  margin: 14rpx 0 28rpx;
+  font-size: 26rpx;
+  opacity: .84;
+}
+
+.campus-card,
+.grid-card,
+.course-card {
+  margin-top: 24rpx;
+  padding: 28rpx;
+}
+
+.section-title {
+  display: block;
+  margin-top: 30rpx;
+  font-size: 34rpx;
+  font-weight: 900;
+}
+
+.muted {
+  display: block;
+  margin-top: 10rpx;
+  color: #66758a;
+  font-size: 26rpx;
+}
+
+.grid-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18rpx;
+}
+
+.shortcut {
+  height: 72rpx;
+  display: grid;
+  place-items: center;
+  border-radius: 14rpx;
+  background: #edf7ff;
+  color: #1168df;
+  font-weight: 700;
+}

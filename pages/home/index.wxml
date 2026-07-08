@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="hero">
+    <text class="eyebrow">LINGZHI VOYAGE</text>
+    <text class="title">AI 智慧教育服务品牌</text>
+    <text class="subtitle">让每个乡镇孩子共享优质教育资源</text>
+    <button class="primary-button" bindtap="goAppointment">预约体验</button>
+  </view>
+
+  <view class="card campus-card" wx:for="{{campuses}}" wx:key="id" data-id="{{item.id}}" bindtap="goCampus">
+    <text class="section-title">{{item.name}}</text>
+    <text class="muted">{{item.address}}</text>
+  </view>
+
+  <view class="card grid-card">
+    <view wx:for="{{shortcuts}}" wx:key="*this" class="shortcut">{{item}}</view>
+  </view>
+
+  <view class="section-title">热门服务</view>
+  <view wx:for="{{courses}}" wx:key="id" class="card course-card" data-id="{{item.id}}" bindtap="goCourse">
+    <text>{{item.title}}</text>
+    <text class="muted">{{item.summary || '适合小学/初中 · 可预约体验'}}</text>
+  </view>
+</view>

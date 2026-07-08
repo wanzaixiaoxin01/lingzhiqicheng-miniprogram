@@ -1,0 +1,24 @@
+page {
+  background: #eef4fa;
+  color: #071a34;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.page {
+  padding: 24rpx;
+}
+
+.card {
+  border-radius: 16rpx;
+  background: #ffffff;
+  box-shadow: 0 14rpx 42rpx rgba(18, 51, 92, .08);
+}
+
+.primary-button {
+  height: 84rpx;
+  border-radius: 16rpx;
+  background: linear-gradient(135deg, #1168df, #20c7e8);
+  color: white;
+  font-weight: 700;
+  line-height: 84rpx;
+}

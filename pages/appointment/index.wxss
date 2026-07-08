@@ -1,0 +1,19 @@
+.form-card {
+  padding: 30rpx;
+}
+
+.title {
+  display: block;
+  margin-bottom: 24rpx;
+  font-size: 38rpx;
+  font-weight: 900;
+}
+
+input {
+  height: 82rpx;
+  margin-bottom: 20rpx;
+  padding: 0 20rpx;
+  border-radius: 14rpx;
+  background: #f5f8fb;
+}
+.muted { display: block; margin-bottom: 18rpx; color: #66758a; }

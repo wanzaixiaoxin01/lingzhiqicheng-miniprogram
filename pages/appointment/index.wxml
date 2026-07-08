@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="card form-card">
+    <text class="title">预约灵智启程体验</text>
+    <text class="muted" wx:if="{{courseTitle}}">意向课程：{{courseTitle}}</text>
+    <text class="muted" wx:if="{{campusName}}">意向校区：{{campusName}}</text>
+    <input placeholder="家长姓名" data-field="name" bindinput="updateField" />
+    <input placeholder="手机号" type="number" data-field="phone" bindinput="updateField" />
+    <input placeholder="孩子年级，如小学四年级" data-field="child_grade" bindinput="updateField" />
+    <input placeholder="备注，如方便联系时间" data-field="message" bindinput="updateField" />
+    <button class="primary-button" bindtap="submitAppointment">提交预约</button>
+  </view>
+</view>
