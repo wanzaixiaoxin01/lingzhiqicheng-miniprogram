@@ -1,9 +1,51 @@
 <view class="page">
-  <view class="hero">
-    <text class="eyebrow">LINGZHI VOYAGE</text>
-    <text class="title">AI 智慧教育服务品牌</text>
-    <text class="subtitle">让每个乡镇孩子共享优质教育资源</text>
-    <button class="primary-button" bindtap="goAppointment">预约体验</button>
+  <view class="poster-section">
+    <swiper
+      class="poster-swiper"
+      current="{{currentPoster}}"
+      autoplay="{{true}}"
+      circular="{{true}}"
+      interval="5200"
+      duration="420"
+      bindchange="onPosterChange"
+    >
+      <swiper-item wx:for="{{posterBanners}}" wx:key="src">
+        <image
+          class="poster-image"
+          src="{{item.src}}"
+          mode="aspectFit"
+          lazy-load="{{true}}"
+          data-src="{{item.src}}"
+          bindtap="previewPoster"
+        ></image>
+      </swiper-item>
+    </swiper>
+
+    <view class="poster-caption">
+      <view class="poster-copy">
+        <text class="poster-kicker">灵智启程 · 品牌主张</text>
+        <text class="poster-title">{{currentPosterInfo.title}}</text>
+        <text class="poster-summary">{{currentPosterInfo.summary}}</text>
+      </view>
+    </view>
+
+    <view class="poster-indicator">
+      <view
+        wx:for="{{posterBanners}}"
+        wx:key="src"
+        class="poster-dot {{index == currentPoster ? 'poster-dot-active' : ''}}"
+      ></view>
+      <text class="poster-count">{{currentPoster + 1}} / {{posterBanners.length}}</text>
+    </view>
+  </view>
+
+  <view class="appointment-section card">
+    <view class="appointment-copy">
+      <text class="appointment-kicker">START HERE</text>
+      <text class="appointment-title">预约一次体验，看看是否适合孩子</text>
+      <text class="appointment-summary">到店了解智习室、学习机和课程服务</text>
+    </view>
+    <button class="appointment-cta" bindtap="goAppointment">预约体验</button>
   </view>
 
   <view class="card campus-card" wx:for="{{campuses}}" wx:key="id" data-id="{{item.id}}" bindtap="goCampus">
@@ -11,11 +53,11 @@
     <text class="muted">{{item.address}}</text>
   </view>
 
+  <view class="section-title">热门服务</view>
   <view class="card grid-card">
-    <view wx:for="{{shortcuts}}" wx:key="*this" class="shortcut">{{item}}</view>
+    <view wx:for="{{shortcuts}}" wx:key="*this" class="shortcut" data-label="{{item}}" bindtap="goShortcut">{{item}}</view>
   </view>
 
-  <view class="section-title">热门服务</view>
   <view wx:for="{{courses}}" wx:key="id" class="card course-card" data-id="{{item.id}}" bindtap="goCourse">
     <text>{{item.title}}</text>
     <text class="muted">{{item.summary || '适合小学/初中 · 可预约体验'}}</text>

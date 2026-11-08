@@ -12,3 +12,4 @@ pnpm-debug.log*
 .idea/
 .vscode/
 *.local
+project.private.config.json

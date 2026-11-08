@@ -1,5 +1,16 @@
 <view class="page">
-  <view class="card article-card">
+  <view wx:if="{{isMaterial && material}}" class="card article-card">
+    <text class="title">{{material.title}}</text>
+    <text class="muted">{{material.summary}}</text>
+    <text class="file-name">{{material.file_name}}</text>
+    <text class="file-meta">{{material.file_size_label}}</text>
+    <view class="action-row">
+      <button wx:if="{{material.can_preview}}" class="preview-button" loading="{{downloading}}" disabled="{{downloading}}" bindtap="previewMaterial">预览资料</button>
+      <button class="download-button" loading="{{downloading}}" disabled="{{downloading}}" bindtap="downloadMaterial">{{material.can_preview ? '下载原文件' : '下载资料包'}}</button>
+    </view>
+    <button wx:if="{{savedFilePath}}" class="share-button" bindtap="shareSavedFile">转发文件</button>
+  </view>
+  <view wx:else class="card article-card">
     <text class="title">{{article.title || '内容详情'}}</text>
     <text class="muted">{{article.summary}}</text>
     <text class="content">{{article.content}}</text>

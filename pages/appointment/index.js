@@ -1,4 +1,5 @@
 import { createLead } from "../../services/api";
+import { decodeQueryValue } from "../../utils/query";
 
 Page({
   data: {
@@ -18,8 +19,8 @@ Page({
     this.setData({
       "form.course_id": options.course_id || "",
       "form.campus_id": options.campus_id || "",
-      courseTitle: options.course_title || "",
-      campusName: options.campus_name || ""
+      courseTitle: decodeQueryValue(options.course_title || ""),
+      campusName: decodeQueryValue(options.campus_name || "")
     });
   },
   updateField(event) {

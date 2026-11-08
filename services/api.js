@@ -28,9 +28,38 @@ export function getArticle(id) {
   return request(`/api/public/articles/${id}`);
 }
 
+export function getMaterials() {
+  return request("/api/public/materials");
+}
+
+export function getMaterial(id) {
+  return request(`/api/public/materials/${id}`);
+}
+
 export function createLead(data) {
   return request("/api/public/leads", {
     method: "POST",
     data
+  });
+}
+
+export function createParentSession(data) {
+  return request("/api/public/parent/session", {
+    method: "POST",
+    data
+  });
+}
+
+export function bindParentStudent(data, sessionToken) {
+  return request("/api/public/parent/bind", {
+    method: "POST",
+    data,
+    header: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : undefined
+  });
+}
+
+export function getParentStudents(sessionToken) {
+  return request("/api/public/parent/students", {
+    header: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : undefined
   });
 }

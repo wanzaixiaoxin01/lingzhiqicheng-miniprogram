@@ -1,27 +1,32 @@
 import { getCourses } from "../../services/api";
+import { mergeInterestCourses } from "../../utils/course-catalog";
 
 Page({
   data: {
-    categories: ["全部", "智习室", "晚托", "学习机"],
-    activeCategory: "",
+    allCourses: [],
     courses: []
   },
   onLoad() {
     this.loadCourses();
   },
-  async loadCourses(category = "") {
+  async loadCourses() {
     try {
-      const courses = await getCourses(category);
-      this.setData({ courses, activeCategory: category });
+      const remoteCourses = await getCourses();
+      const allCourses = mergeInterestCourses(remoteCourses);
+      this.setData({ allCourses, courses: allCourses });
     } catch (error) {
-      wx.showToast({ title: "课程加载失败", icon: "none" });
+      const allCourses = mergeInterestCourses();
+      this.setData({ allCourses, courses: allCourses });
     }
   },
-  selectCategory(event) {
-    const value = event.currentTarget.dataset.value;
-    this.loadCourses(value === "全部" ? "" : value);
-  },
   goDetail(event) {
+    const course = this.data.courses.find((item) => item.id === event.currentTarget.dataset.id);
+    if (course && course.isLocal) {
+      wx.navigateTo({
+        url: `/pages/appointment/index?course_title=${encodeURIComponent(course.title)}`
+      });
+      return;
+    }
     wx.navigateTo({ url: `/pages/course-detail/index?id=${event.currentTarget.dataset.id}` });
   }
 });

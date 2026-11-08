@@ -1,0 +1,492 @@
+.self-study-page {
+  height: 100vh;
+  box-sizing: border-box;
+  background: #eef6ff;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 790rpx;
+  padding: 52rpx 40rpx 44rpx;
+  box-sizing: border-box;
+  color: #fff;
+  background: #06245b;
+}
+
+.hero::before {
+  position: absolute;
+  top: -200rpx;
+  right: -220rpx;
+  width: 650rpx;
+  height: 650rpx;
+  border: 2rpx solid rgba(90, 211, 255, .3);
+  border-radius: 50%;
+  content: "";
+}
+
+.hero::after {
+  position: absolute;
+  right: -80rpx;
+  bottom: -260rpx;
+  width: 680rpx;
+  height: 480rpx;
+  border-radius: 50%;
+  background: rgba(21, 175, 224, .2);
+  content: "";
+  transform: rotate(-14deg);
+}
+
+.hero-orbit {
+  position: absolute;
+  border: 2rpx solid rgba(255, 255, 255, .16);
+  border-radius: 50%;
+  transform: rotate(-22deg);
+}
+
+.hero-orbit-one {
+  top: 250rpx;
+  left: -270rpx;
+  width: 690rpx;
+  height: 190rpx;
+}
+
+.hero-orbit-two {
+  top: 335rpx;
+  right: -310rpx;
+  width: 720rpx;
+  height: 210rpx;
+}
+
+.hero-spark {
+  position: absolute;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: #f7c94b;
+  box-shadow: 0 0 18rpx rgba(247, 201, 75, .9);
+}
+
+.spark-one { top: 170rpx; right: 118rpx; }
+.spark-two { top: 470rpx; left: 66rpx; background: #5fd8ff; box-shadow: 0 0 18rpx rgba(95, 216, 255, .9); }
+
+.hero-brand,
+.hero-kicker,
+.hero-title,
+.hero-subtitle,
+.hero-points,
+.hero-button {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+}
+
+.hero-logo {
+  width: 92rpx;
+  height: 92rpx;
+  margin-right: 18rpx;
+  border: 4rpx solid rgba(255, 255, 255, .8);
+  border-radius: 50%;
+  background: #fff;
+}
+
+.brand-name,
+.brand-en {
+  display: block;
+}
+
+.brand-name {
+  font-size: 32rpx;
+  font-weight: 900;
+  letter-spacing: 4rpx;
+}
+
+.brand-en {
+  margin-top: 8rpx;
+  color: #a8d9ff;
+  font-size: 18rpx;
+  letter-spacing: 4rpx;
+}
+
+.hero-kicker {
+  display: block;
+  margin-top: 86rpx;
+  color: #f7c94b;
+  font-size: 20rpx;
+  font-weight: 800;
+  letter-spacing: 3rpx;
+}
+
+.hero-title {
+  display: block;
+  margin-top: 14rpx;
+  font-size: 64rpx;
+  font-weight: 900;
+  letter-spacing: 2rpx;
+}
+
+.hero-subtitle {
+  display: block;
+  margin-top: 18rpx;
+  color: #d5ecff;
+  font-size: 28rpx;
+}
+
+.hero-points {
+  display: flex;
+  margin-top: 46rpx;
+}
+
+.hero-point {
+  display: flex;
+  align-items: center;
+  margin-right: 28rpx;
+  color: #f1f8ff;
+  font-size: 23rpx;
+}
+
+.point-index {
+  margin-right: 8rpx;
+  color: #f7c94b;
+  font-size: 18rpx;
+  font-weight: 900;
+}
+
+.hero-button,
+.contact-button {
+  height: 84rpx;
+  line-height: 84rpx;
+  border: 0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.hero-button {
+  width: 330rpx;
+  margin: 48rpx 0 0;
+  background: #f7c94b;
+  color: #122d61;
+}
+
+.intro-section,
+.benefits-section,
+.contact-section {
+  padding: 60rpx 40rpx;
+}
+
+.intro-section {
+  background: #fff;
+}
+
+.section-overline {
+  display: block;
+  color: #1686cf;
+  font-size: 19rpx;
+  font-weight: 900;
+  letter-spacing: 3rpx;
+}
+
+.section-title {
+  display: block;
+  margin-top: 14rpx;
+  color: #09285e;
+  font-size: 38rpx;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.section-copy {
+  display: block;
+  margin-top: 22rpx;
+  color: #58708f;
+  font-size: 27rpx;
+  line-height: 1.8;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 56rpx 40rpx 24rpx;
+}
+
+.compact-title { margin-top: 10rpx; }
+
+.section-count {
+  padding-bottom: 8rpx;
+  color: #78a0c4;
+  font-size: 22rpx;
+}
+
+.room-list {
+  padding: 0 28rpx;
+}
+
+.room-card {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 22rpx;
+  padding: 30rpx 28rpx 26rpx;
+  border: 2rpx solid rgba(16, 117, 190, .12);
+  border-radius: 18rpx;
+  background: #fff;
+  box-shadow: 0 18rpx 40rpx rgba(40, 95, 143, .1);
+}
+
+.room-card::after {
+  position: absolute;
+  right: -70rpx;
+  bottom: -100rpx;
+  width: 240rpx;
+  height: 240rpx;
+  border: 2rpx solid rgba(24, 176, 218, .18);
+  border-radius: 50%;
+  content: "";
+}
+
+.room-card-1 { border-color: rgba(24, 176, 218, .22); }
+.room-card-2 { border-color: rgba(247, 183, 67, .25); }
+
+.room-card-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.room-number {
+  display: grid;
+  width: 68rpx;
+  height: 68rpx;
+  margin-right: 18rpx;
+  place-items: center;
+  border-radius: 16rpx;
+  background: #e9f4ff;
+  color: #136bc7;
+  font-size: 22rpx;
+  font-weight: 900;
+}
+
+.room-card-1 .room-number { background: #e8fbfc; color: #0c9da9; }
+.room-card-2 .room-number { background: #fff5dc; color: #c68712; }
+
+.room-name,
+.room-label,
+.address-text,
+.benefit-title,
+.benefit-copy {
+  display: block;
+}
+
+.room-name {
+  color: #09285e;
+  font-size: 34rpx;
+  font-weight: 900;
+}
+
+.room-label {
+  margin-top: 5rpx;
+  color: #6c8eae;
+  font-size: 21rpx;
+}
+
+.room-address {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 28rpx;
+  padding-top: 22rpx;
+  border-top: 2rpx solid #edf4fa;
+}
+
+.address-mark {
+  margin: 0 12rpx 0 2rpx;
+  color: #1686cf;
+  font-size: 30rpx;
+  line-height: 1.3;
+}
+
+.address-text {
+  flex: 1;
+  color: #4e6681;
+  font-size: 25rpx;
+  line-height: 1.6;
+}
+
+.room-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  margin-top: 24rpx;
+}
+
+.room-action {
+  flex: 1;
+  height: 64rpx;
+  margin: 0 10rpx 0 0;
+  padding: 0;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  line-height: 64rpx;
+}
+
+.room-action:last-child { margin-right: 0; }
+.light-action { background: #edf6ff; color: #166ab9; }
+.dark-action { background: #0a326f; color: #fff; }
+
+.gallery-section {
+  padding: 58rpx 28rpx 62rpx;
+  background: #fff;
+}
+
+.gallery-section .section-overline,
+.gallery-section .section-title,
+.gallery-copy {
+  margin-left: 12rpx;
+  margin-right: 12rpx;
+}
+
+.gallery-copy {
+  margin-top: 14rpx;
+}
+
+.gallery-grid {
+  display: flex;
+  margin-top: 28rpx;
+}
+
+.gallery-item {
+  overflow: hidden;
+  flex: 1;
+  margin-right: 18rpx;
+  border-radius: 18rpx;
+  background: #f3f8fc;
+  box-shadow: 0 16rpx 32rpx rgba(40, 95, 143, .12);
+}
+
+.gallery-item:last-child { margin-right: 0; }
+
+.gallery-image {
+  display: block;
+  width: 100%;
+  height: 320rpx;
+}
+
+.gallery-caption {
+  padding: 20rpx 18rpx 22rpx;
+}
+
+.gallery-title,
+.gallery-text {
+  display: block;
+}
+
+.gallery-title {
+  color: #09285e;
+  font-size: 25rpx;
+  font-weight: 900;
+}
+
+.gallery-text {
+  margin-top: 7rpx;
+  color: #7189a2;
+  font-size: 21rpx;
+  line-height: 1.45;
+}
+
+.benefits-section {
+  background: #f7fbff;
+}
+
+.benefit-list {
+  margin-top: 30rpx;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  padding: 22rpx 0;
+  border-bottom: 2rpx solid #e7f0f8;
+}
+
+.benefit-item:last-child { border-bottom: 0; }
+
+.benefit-icon {
+  display: grid;
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+  place-items: center;
+  border-radius: 20rpx;
+  background: #1686cf;
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: 900;
+}
+
+.mint-icon { background: #20b8bd; }
+.gold-icon { background: #e9ab35; }
+
+.benefit-title {
+  color: #0a326f;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.benefit-copy {
+  margin-top: 7rpx;
+  color: #6d849d;
+  font-size: 24rpx;
+}
+
+.contact-section {
+  color: #fff;
+  background: #082a68;
+}
+
+.contact-kicker {
+  display: block;
+  color: #f7c94b;
+  font-size: 18rpx;
+  font-weight: 900;
+  letter-spacing: 2rpx;
+}
+
+.contact-title {
+  display: block;
+  margin-top: 18rpx;
+  font-size: 38rpx;
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+.contact-button {
+  width: 100%;
+  margin: 34rpx 0 30rpx;
+  background: #f7c94b;
+  color: #12326c;
+}
+
+.hotline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12rpx;
+  color: #d8eaff;
+  font-size: 24rpx;
+}
+
+.hotline {
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 900;
+  letter-spacing: 1rpx;
+}
+
+.hotline-muted { color: #a9c5e9; }

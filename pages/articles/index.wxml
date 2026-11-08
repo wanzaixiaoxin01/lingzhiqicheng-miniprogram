@@ -1,13 +1,25 @@
 <view class="page">
-  <view class="tab-row">
-    <text wx:for="{{tabs}}" wx:key="value" data-type="{{item.value}}" bindtap="selectType" class="tab">{{item.label}}</text>
+  <view class="page-intro">
+    <text class="title">{{pageTitle}}</text>
+    <text class="muted">{{pageSummary}}</text>
   </view>
-  <view class="card article-card">
-    <text class="title">内容列表</text>
-    <text class="muted">请选择学习资料、教育动态或活动风采</text>
-  </view>
-  <view class="card article-card" wx:for="{{articles}}" wx:key="id" data-id="{{item.id}}" bindtap="goDetail">
-    <text class="title">{{item.title}}</text>
-    <text class="muted">{{item.summary}}</text>
-  </view>
+  <block wx:if="{{activeType === 'material'}}">
+    <view class="card article-card" wx:for="{{materials}}" wx:key="id" data-id="{{item.id}}" data-kind="material" bindtap="goDetail">
+      <text class="title">{{item.title}}</text>
+      <text wx:if="{{item.summary}}" class="muted">{{item.summary}}</text>
+      <text class="file-meta">{{item.file_name}} · {{item.file_size_label}}</text>
+    </view>
+    <view wx:if="{{!materials.length}}" class="card empty-card">
+      <text class="muted">{{emptyText}}</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="card article-card" wx:for="{{articles}}" wx:key="id" data-id="{{item.id}}" data-kind="{{activeType}}" bindtap="goDetail">
+      <text class="title">{{item.title}}</text>
+      <text wx:if="{{item.summary}}" class="muted">{{item.summary}}</text>
+    </view>
+    <view wx:if="{{!articles.length}}" class="card empty-card">
+      <text class="muted">{{emptyText}}</text>
+    </view>
+  </block>
 </view>

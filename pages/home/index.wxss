@@ -1,34 +1,152 @@
-.hero {
-  min-height: 320rpx;
-  border-radius: 20rpx;
-  padding: 34rpx;
-  color: white;
-  background: linear-gradient(135deg, #071a34, #1168df 58%, #20c7e8);
+.poster-section {
+  overflow: hidden;
+  border-radius: 22rpx;
+  background: #092c68;
+  box-shadow: 0 20rpx 46rpx rgba(9, 52, 111, .2);
 }
 
-.eyebrow,
-.title,
-.subtitle {
+.poster-swiper {
+  width: 100%;
+  height: 936rpx;
+  background: #092c68;
+}
+
+.poster-swiper swiper-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poster-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.poster-caption {
+  display: block;
+  padding: 24rpx 26rpx 22rpx;
+  background: #ffffff;
+}
+
+.poster-copy {
+  min-width: 0;
+}
+
+.poster-kicker,
+.poster-title,
+.poster-summary {
   display: block;
 }
 
-.eyebrow {
-  font-size: 22rpx;
-  opacity: .78;
-  font-weight: 700;
+.poster-kicker {
+  color: #227cc4;
+  font-size: 20rpx;
+  font-weight: 800;
+  letter-spacing: 2rpx;
 }
 
-.title {
-  margin-top: 28rpx;
-  font-size: 44rpx;
-  line-height: 1.18;
+.poster-title {
+  margin-top: 8rpx;
+  color: #0a2d67;
+  font-size: 32rpx;
   font-weight: 900;
 }
 
-.subtitle {
-  margin: 14rpx 0 28rpx;
-  font-size: 26rpx;
-  opacity: .84;
+.poster-summary {
+  overflow: hidden;
+  margin-top: 6rpx;
+  color: #687a91;
+  font-size: 23rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.appointment-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24rpx;
+  padding: 24rpx 26rpx;
+  border: 2rpx solid rgba(17, 104, 223, .08);
+}
+
+.appointment-copy {
+  min-width: 0;
+}
+
+.appointment-kicker,
+.appointment-title,
+.appointment-summary {
+  display: block;
+}
+
+.appointment-kicker {
+  color: #227cc4;
+  font-size: 19rpx;
+  font-weight: 800;
+  letter-spacing: 2rpx;
+}
+
+.appointment-title {
+  margin-top: 8rpx;
+  color: #0a2d67;
+  font-size: 29rpx;
+  font-weight: 900;
+}
+
+.appointment-summary {
+  margin-top: 6rpx;
+  color: #687a91;
+  font-size: 22rpx;
+}
+
+.appointment-cta {
+  flex: 0 0 auto;
+  width: 190rpx;
+  height: 72rpx;
+  margin: 0;
+  padding: 0;
+  margin-left: 20rpx;
+  border: 0;
+  border-radius: 36rpx;
+  background: linear-gradient(135deg, #1168df, #20b8d7);
+  color: #ffffff;
+  font-size: 25rpx;
+  font-weight: 800;
+  line-height: 72rpx;
+}
+
+.appointment-cta::after {
+  border: 0;
+}
+
+.poster-indicator {
+  display: flex;
+  align-items: center;
+  padding: 0 28rpx 24rpx;
+  background: #ffffff;
+}
+
+.poster-dot {
+  width: 12rpx;
+  height: 12rpx;
+  margin-right: 10rpx;
+  border-radius: 50%;
+  background: #c9d6e4;
+}
+
+.poster-dot-active {
+  width: 32rpx;
+  border-radius: 8rpx;
+  background: #1168df;
+}
+
+.poster-count {
+  margin-left: auto;
+  color: #91a0b2;
+  font-size: 21rpx;
+  font-weight: 700;
 }
 
 .campus-card,

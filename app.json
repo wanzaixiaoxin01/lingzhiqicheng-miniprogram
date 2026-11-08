@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/index",
+    "pages/self-study/index",
     "pages/courses/index",
     "pages/course-detail/index",
     "pages/campuses/index",

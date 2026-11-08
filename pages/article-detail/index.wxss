@@ -2,3 +2,10 @@
 .title { font-size: 36rpx; font-weight: 900; }
 .muted { display: block; margin-top: 10rpx; color: #66758a; }
 .content { display: block; margin-top: 24rpx; color: #263a54; line-height: 1.8; }
+.file-name { display: block; margin-top: 24rpx; color: #263a54; font-weight: 700; }
+.file-meta { display: block; margin-top: 10rpx; color: #66758a; }
+.action-row { display: flex; gap: 16rpx; margin-top: 28rpx; }
+.action-row button { flex: 1; margin: 0; }
+.preview-button { background: #edf7ff; color: #1168df; }
+.download-button { background: #1168df; color: #fff; }
+.share-button { margin: 18rpx 0 0; background: #effaf2; color: #1d7a35; }
