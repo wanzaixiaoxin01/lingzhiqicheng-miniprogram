@@ -1,74 +1,35 @@
-import { getHome } from "../../services/api";
-import { HOME_POSTERS } from "../../utils/home-posters";
-
 Page({
   data: {
-    shortcuts: ["智习室", "学习机", "课程服务", "预约体验", "学习资料", "活动风采"],
-    posterBanners: HOME_POSTERS,
-    currentPoster: 0,
-    currentPosterInfo: HOME_POSTERS[0],
-    banners: [],
-    campuses: [],
-    courses: [],
-    articles: []
+    shortcuts: [
+      { label: "课程服务", mark: "COURSE", url: "/pages/courses/index", mode: "tab" },
+      { label: "学习资料", mark: "MATERIAL", url: "/pages/articles/index?type=material" },
+      { label: "活动风采", mark: "ACTIVITY", mode: "coming-soon" },
+      { label: "智习室", mark: "SPACE", url: "/pages/self-study/index" },
+      { label: "学习机", mark: "AI", url: "/pages/growth/index", mode: "tab" }
+    ]
   },
-  onLoad() {
-    this.loadHome();
-  },
-  async loadHome() {
-    try {
-      const data = await getHome();
-      this.setData({ ...data, posterBanners: HOME_POSTERS });
-    } catch (error) {
-      wx.showToast({ title: "首页加载失败", icon: "none" });
+
+  onShow() {
+    const tabBar = this.getTabBar && this.getTabBar();
+    if (tabBar) {
+      tabBar.setData({ selected: 0 });
     }
   },
-  onPosterChange(event) {
-    const currentPoster = event.detail.current;
-    this.setData({
-      currentPoster,
-      currentPosterInfo: this.data.posterBanners[currentPoster]
-    });
-  },
-  previewPoster(event) {
-    const current = event.currentTarget.dataset.src;
-    wx.previewImage({
-      current,
-      urls: this.data.posterBanners.map((poster) => poster.src)
-    });
-  },
-  goAppointment() {
-    wx.navigateTo({ url: "/pages/appointment/index" });
-  },
-  goCourses() {
-    wx.switchTab({ url: "/pages/courses/index" });
-  },
-  goCourse(event) {
-    wx.navigateTo({ url: `/pages/course-detail/index?id=${event.currentTarget.dataset.id}` });
-  },
-  goCampus(event) {
-    wx.navigateTo({ url: `/pages/campus-detail/index?id=${event.currentTarget.dataset.id}` });
-  },
+
   goShortcut(event) {
-    const routes = {
-      "智习室": "/pages/self-study/index",
-      "自习室": "/pages/self-study/index",
-      "课程服务": "/pages/courses/index",
-      "预约体验": "/pages/appointment/index",
-      "学习资料": "/pages/articles/index?type=material",
-      "活动风采": "/pages/articles/index?type=activity"
-    };
-    const url = routes[event.currentTarget.dataset.label];
-    if (!url) {
+    const { url, mode } = event.currentTarget.dataset;
+    if (mode === "coming-soon") {
+      wx.showToast({ title: "敬请期待", icon: "none" });
       return;
     }
-    if (url === "/pages/courses/index") {
+    if (mode === "tab") {
       wx.switchTab({ url });
       return;
     }
     wx.navigateTo({ url });
   },
-  goArticles() {
-    wx.navigateTo({ url: "/pages/articles/index" });
+
+  goAppointment() {
+    wx.navigateTo({ url: "/pages/appointment/index" });
   }
 });

@@ -19,6 +19,7 @@
     "backgroundColor": "#eef4fa"
   },
   "tabBar": {
+    "custom": true,
     "color": "#8a96a5",
     "selectedColor": "#1168df",
     "backgroundColor": "#ffffff",
@@ -33,7 +34,7 @@
       },
       {
         "pagePath": "pages/growth/index",
-        "text": "成长"
+        "text": "AI学习机"
       },
       {
         "pagePath": "pages/profile/index",

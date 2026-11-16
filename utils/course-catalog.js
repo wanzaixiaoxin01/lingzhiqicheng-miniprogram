@@ -3,7 +3,7 @@ export const COURSE_CATEGORIES = [
   "编程与逻辑",
   "英语口语",
   "表达与阅读",
-  "书法",
+  "练字",
   "绘画",
   "音乐与乐器"
 ];
@@ -17,9 +17,19 @@ const CATEGORY_ALIASES = {
   表达: "表达与阅读",
   表达课: "表达与阅读",
   阅读表达: "表达与阅读",
+  书法: "练字",
   音乐: "音乐与乐器",
   乐器: "音乐与乐器",
   音乐课: "音乐与乐器"
+};
+
+const CATEGORY_IMAGES = {
+  "编程与逻辑": "/assets/courses/programming-workshop-v1.jpg",
+  "英语口语": "/assets/courses/english-speaking-v1.jpg",
+  "表达与阅读": "/assets/courses/expression-reading-v1.jpg",
+  "练字": "/assets/courses/handwriting-v1.jpg",
+  "绘画": "/assets/courses/painting-v1.jpg",
+  "音乐与乐器": "/assets/courses/music-instruments-v1.jpg"
 };
 
 export const INTEREST_COURSES = [
@@ -27,6 +37,7 @@ export const INTEREST_COURSES = [
     id: "interest-programming",
     title: "编程与逻辑",
     category: "编程与逻辑",
+    image: CATEGORY_IMAGES["编程与逻辑"],
     summary: "从积木编程到项目实践，培养拆解问题和创造性解决问题的能力。",
     suitable_grade: "小学 / 初中",
     service_period: "按主题课次安排",
@@ -41,6 +52,7 @@ export const INTEREST_COURSES = [
     id: "interest-english-speaking",
     title: "英语口语",
     category: "英语口语",
+    image: CATEGORY_IMAGES["英语口语"],
     summary: "用 AI 陪伴和真实情境对话，让孩子愿意开口、能够表达。",
     suitable_grade: "小学 / 初中",
     service_period: "按主题课次安排",
@@ -55,6 +67,7 @@ export const INTEREST_COURSES = [
     id: "interest-expression-reading",
     title: "表达与阅读",
     category: "表达与阅读",
+    image: CATEGORY_IMAGES["表达与阅读"],
     summary: "拓展阅读丰富度，鼓励孩子思考、讨论并勇敢表达自己的观点。",
     suitable_grade: "小学 / 初中",
     service_period: "按主题课次安排",
@@ -67,8 +80,9 @@ export const INTEREST_COURSES = [
   },
   {
     id: "interest-calligraphy",
-    title: "书法",
-    category: "书法",
+    title: "练字",
+    category: "练字",
+    image: CATEGORY_IMAGES["练字"],
     summary: "从基本笔画到作品练习，在专注书写中建立审美和耐心。",
     suitable_grade: "小学 / 初中",
     service_period: "按主题课次安排",
@@ -83,6 +97,7 @@ export const INTEREST_COURSES = [
     id: "interest-painting",
     title: "绘画",
     category: "绘画",
+    image: CATEGORY_IMAGES["绘画"],
     summary: "从观察和想象出发，用画笔把自己的感受变成作品。",
     suitable_grade: "小学 / 初中",
     service_period: "按主题课次安排",
@@ -97,6 +112,7 @@ export const INTEREST_COURSES = [
     id: "interest-music-instruments",
     title: "音乐与乐器",
     category: "音乐与乐器",
+    image: CATEGORY_IMAGES["音乐与乐器"],
     summary: "接触钢琴、吉他等乐器，在节奏与演奏中找到属于自己的热爱。",
     suitable_grade: "小学 / 初中",
     service_period: "按主题课次安排",
@@ -121,11 +137,15 @@ export function isInterestCourse(course) {
 export function mergeInterestCourses(remoteCourses = []) {
   const normalizedRemote = remoteCourses
     .filter(isInterestCourse)
-    .map((course) => ({
-      ...course,
-      category: normalizeCourseCategory(course.category),
-      tags: Array.isArray(course.tags) ? course.tags : []
-    }));
+    .map((course) => {
+      const category = normalizeCourseCategory(course.category);
+      return {
+        ...course,
+        category,
+        image: course.image || CATEGORY_IMAGES[category],
+        tags: Array.isArray(course.tags) ? course.tags : []
+      };
+    });
   const remoteCategories = new Set(normalizedRemote.map((course) => course.category));
   const fallbackCourses = INTEREST_COURSES.filter((course) => !remoteCategories.has(course.category));
 

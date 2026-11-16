@@ -1,65 +1,126 @@
-<view class="page">
-  <view class="poster-section">
-    <swiper
-      class="poster-swiper"
-      current="{{currentPoster}}"
-      autoplay="{{true}}"
-      circular="{{true}}"
-      interval="5200"
-      duration="420"
-      bindchange="onPosterChange"
-    >
-      <swiper-item wx:for="{{posterBanners}}" wx:key="src">
-        <image
-          class="poster-image"
-          src="{{item.src}}"
-          mode="aspectFit"
-          lazy-load="{{true}}"
-          data-src="{{item.src}}"
-          bindtap="previewPoster"
-        ></image>
-      </swiper-item>
-    </swiper>
+<view class="home-page">
+  <view class="hero-section">
+    <image
+      class="hero-image"
+      src="../../assets/home/hero-space-ai-v2.jpg"
+      mode="aspectFill"
+    ></image>
+    <view class="hero-shade"></view>
+    <image
+      class="hero-brand-logo"
+      src="../../assets/lingzhi-logo-144.png"
+      mode="aspectFit"
+    ></image>
+    <view class="hero-copy">
+      <text class="hero-kicker">LINGZHI SERVICE MODEL</text>
+      <text class="hero-title">学习空间</text>
+      <text class="hero-title hero-title-accent">× AI 陪伴</text>
+      <text class="hero-summary">灵智启程以学习空间为基础，以 AI 学习陪伴支持日常学习，并通过高校参访、兴趣拓展和多元研习活动，帮助孩子发展爱好、开阔眼界。</text>
+      <view class="hero-paths">
+        <text>SPACE</text>
+        <text>AI</text>
+        <text>FIELD</text>
+      </view>
+    </view>
+    <view class="hero-appointment-entry" bindtap="goAppointment">
+      <text>预约体验</text>
+      <text class="hero-appointment-arrow">→</text>
+    </view>
+  </view>
 
-    <view class="poster-caption">
-      <view class="poster-copy">
-        <text class="poster-kicker">灵智启程 · 品牌主张</text>
-        <text class="poster-title">{{currentPosterInfo.title}}</text>
-        <text class="poster-summary">{{currentPosterInfo.summary}}</text>
+  <view class="content-shell">
+    <view class="section-heading">
+      <text class="section-kicker">WHAT WE OFFER</text>
+      <text class="section-title">核心服务</text>
+    </view>
+
+    <view class="service-card">
+      <image
+        class="service-image"
+        src="../../assets/home/learning-space-interior-v2.jpg"
+        mode="aspectFill"
+        lazy-load="true"
+      ></image>
+      <view class="service-copy">
+        <text class="service-index">01 · SPACE</text>
+        <text class="service-title">空间服务</text>
+        <text class="service-summary">安静、稳定、有陪伴，让孩子愿意坐下来，专注完成作业、阅读、复盘与自主探索。</text>
+        <view class="service-tags">
+          <text>安静专注</text>
+          <text>自主管理</text>
+          <text>稳定陪伴</text>
+        </view>
       </view>
     </view>
 
-    <view class="poster-indicator">
-      <view
-        wx:for="{{posterBanners}}"
-        wx:key="src"
-        class="poster-dot {{index == currentPoster ? 'poster-dot-active' : ''}}"
-      ></view>
-      <text class="poster-count">{{currentPoster + 1}} / {{posterBanners.length}}</text>
+    <view class="service-card">
+      <image
+        class="service-image"
+        src="../../assets/home/ai-device-scene-v2.jpg"
+        mode="aspectFill"
+        lazy-load="true"
+      ></image>
+      <view class="service-copy">
+        <text class="service-index">02 · AI COMPANION</text>
+        <text class="service-title">AI 陪伴</text>
+        <text class="service-summary">把练习、复盘、语言表达和兴趣探索带进日常学习，提供及时提示与过程反馈。</text>
+        <view class="service-tags">
+          <text>练习复盘</text>
+          <text>语言表达</text>
+          <text>过程反馈</text>
+        </view>
+      </view>
     </view>
-  </view>
 
-  <view class="appointment-section card">
-    <view class="appointment-copy">
-      <text class="appointment-kicker">START HERE</text>
-      <text class="appointment-title">预约一次体验，看看是否适合孩子</text>
-      <text class="appointment-summary">到店了解智习室、学习机和课程服务</text>
+    <view class="service-card">
+      <image
+        class="service-image"
+        src="../../assets/home/interest-workshop-v2.jpg"
+        mode="aspectFill"
+        lazy-load="true"
+      ></image>
+      <view class="service-copy">
+        <text class="service-index">03 · FIELD</text>
+        <text class="service-title">兴趣研学</text>
+        <text class="service-summary">从高校参访到多元兴趣活动，让孩子接触更丰富的人、事与学习方式。</text>
+        <view class="service-tags">
+          <text>高校参访</text>
+          <text>兴趣活动</text>
+          <text>真实场景</text>
+        </view>
+      </view>
     </view>
-    <button class="appointment-cta" bindtap="goAppointment">预约体验</button>
-  </view>
 
-  <view class="card campus-card" wx:for="{{campuses}}" wx:key="id" data-id="{{item.id}}" bindtap="goCampus">
-    <text class="section-title">{{item.name}}</text>
-    <text class="muted">{{item.address}}</text>
-  </view>
+    <view class="shortcut-section">
+      <view class="shortcut-heading">
+        <text class="section-kicker">QUICK ACCESS</text>
+        <text class="shortcut-title">热门服务</text>
+      </view>
+      <view class="shortcut-grid">
+        <view
+          wx:for="{{shortcuts}}"
+          wx:key="label"
+          class="shortcut-item"
+          data-url="{{item.url}}"
+          data-mode="{{item.mode}}"
+          bindtap="goShortcut"
+        >
+          <text class="shortcut-mark">{{item.mark}}</text>
+          <text class="shortcut-label">{{item.label}}</text>
+          <text class="shortcut-arrow">↗</text>
+        </view>
+      </view>
+    </view>
 
-  <view class="section-title">热门服务</view>
-  <view class="card grid-card">
-    <view wx:for="{{shortcuts}}" wx:key="*this" class="shortcut" data-label="{{item}}" bindtap="goShortcut">{{item}}</view>
-  </view>
-
-  <view wx:for="{{courses}}" wx:key="id" class="card course-card" data-id="{{item.id}}" bindtap="goCourse">
-    <text>{{item.title}}</text>
-    <text class="muted">{{item.summary || '适合小学/初中 · 可预约体验'}}</text>
+    <view class="appointment-section">
+      <view class="appointment-orbit appointment-orbit-large"></view>
+      <view class="appointment-orbit appointment-orbit-small"></view>
+      <view class="appointment-copy">
+        <text class="appointment-kicker">START HERE</text>
+        <text class="appointment-title">预约一次体验</text>
+        <text class="appointment-summary">到店体验学习空间与 AI 学习方案，为孩子找到更适合的成长路径。</text>
+      </view>
+      <button class="appointment-cta" bindtap="goAppointment">立即预约</button>
+    </view>
   </view>
 </view>

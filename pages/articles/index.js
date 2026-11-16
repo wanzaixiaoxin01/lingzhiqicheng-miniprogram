@@ -1,13 +1,18 @@
 import { getArticles, getMaterials } from "../../services/api";
+import { MATERIAL_ACTIONS } from "../../utils/material-actions";
 
 Page({
+  ...MATERIAL_ACTIONS,
   data: {
     activeType: "material",
     pageTitle: "学习资料",
     pageSummary: "后台上传的学习资料",
     emptyText: "暂无学习资料",
     articles: [],
-    materials: []
+    materials: [],
+    downloadingId: "",
+    activeMaterialAction: "",
+    savedFilePaths: {}
   },
   onLoad(options) {
     this.loadContent(options.type || "material");
@@ -22,7 +27,11 @@ Page({
 
     try {
       if (contentType === "material") {
-        const materials = await getMaterials();
+        const materials = (await getMaterials()).map((item, index) => ({
+          ...item,
+          fileType: String(item.extension || "FILE").replace(".", "").toUpperCase(),
+          fileIndex: `${index < 9 ? "0" : ""}${index + 1}`
+        }));
         this.setData({
           materials,
           articles: [],
@@ -31,6 +40,7 @@ Page({
           pageSummary: pageInfo.summary,
           emptyText: pageInfo.empty
         });
+        materials.forEach((item) => this.restoreSavedFile(item));
         return;
       }
       const articles = await getArticles(contentType);

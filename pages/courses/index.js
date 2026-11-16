@@ -6,6 +6,12 @@ Page({
     allCourses: [],
     courses: []
   },
+  onShow() {
+    const tabBar = this.getTabBar && this.getTabBar();
+    if (tabBar) {
+      tabBar.setData({ selected: 1 });
+    }
+  },
   onLoad() {
     this.loadCourses();
   },

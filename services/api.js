@@ -63,3 +63,17 @@ export function getParentStudents(sessionToken) {
     header: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : undefined
   });
 }
+
+export function authorizeParentPhone(code, sessionToken) {
+  return request("/api/public/parent/phone", {
+    method: "POST",
+    data: { code },
+    header: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : undefined
+  });
+}
+
+export function getParentDashboard(sessionToken) {
+  return request("/api/public/parent/dashboard", {
+    header: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : undefined
+  });
+}

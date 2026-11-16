@@ -1,25 +1,68 @@
-<view class="page">
+<view class="page materials-page">
   <view class="page-intro">
-    <text class="title">{{pageTitle}}</text>
-    <text class="muted">{{pageSummary}}</text>
-  </view>
-  <block wx:if="{{activeType === 'material'}}">
-    <view class="card article-card" wx:for="{{materials}}" wx:key="id" data-id="{{item.id}}" data-kind="material" bindtap="goDetail">
-      <text class="title">{{item.title}}</text>
-      <text wx:if="{{item.summary}}" class="muted">{{item.summary}}</text>
-      <text class="file-meta">{{item.file_name}} · {{item.file_size_label}}</text>
+    <text class="eyebrow">MATERIAL LIBRARY</text>
+    <view class="intro-row">
+      <view class="intro-copy">
+        <text class="page-title">{{pageTitle}}</text>
+        <text class="page-summary">{{pageSummary}}</text>
+      </view>
+      <view wx:if="{{activeType === 'material' && materials.length}}" class="material-count">
+        <text class="count-number">{{materials.length}}</text>
+        <text class="count-label">份资料</text>
+      </view>
     </view>
+  </view>
+
+  <block wx:if="{{activeType === 'material'}}">
+    <view class="material-card" wx:for="{{materials}}" wx:key="id">
+      <view class="material-main">
+        <view class="file-badge">
+          <text class="file-type">{{item.fileType}}</text>
+        </view>
+        <view class="material-copy">
+          <text class="material-title">{{item.title}}</text>
+          <text wx:if="{{item.summary}}" class="material-summary">{{item.summary}}</text>
+          <view class="file-info">
+            <text class="file-name">{{item.file_name}}</text>
+            <text class="file-size">{{item.file_size_label}}</text>
+          </view>
+        </view>
+        <text class="file-index">{{item.fileIndex}}</text>
+      </view>
+
+      <view class="material-actions">
+        <button
+          wx:if="{{item.can_preview}}"
+          class="material-action action-primary"
+          data-id="{{item.id}}"
+          loading="{{downloadingId === item.id && activeMaterialAction === 'preview'}}"
+          disabled="{{downloadingId === item.id}}"
+          catchtap="previewMaterial"
+        >在线预览</button>
+        <button
+          class="material-action action-share"
+          data-id="{{item.id}}"
+          loading="{{downloadingId === item.id && activeMaterialAction === 'share'}}"
+          disabled="{{downloadingId === item.id}}"
+          catchtap="shareSavedFile"
+        >转发</button>
+      </view>
+    </view>
+
     <view wx:if="{{!materials.length}}" class="card empty-card">
-      <text class="muted">{{emptyText}}</text>
+      <text class="empty-mark">—</text>
+      <text class="empty-title">{{emptyText}}</text>
+      <text class="page-summary">资料发布后会显示在这里</text>
     </view>
   </block>
+
   <block wx:else>
     <view class="card article-card" wx:for="{{articles}}" wx:key="id" data-id="{{item.id}}" data-kind="{{activeType}}" bindtap="goDetail">
-      <text class="title">{{item.title}}</text>
-      <text wx:if="{{item.summary}}" class="muted">{{item.summary}}</text>
+      <text class="article-title">{{item.title}}</text>
+      <text wx:if="{{item.summary}}" class="page-summary">{{item.summary}}</text>
     </view>
     <view wx:if="{{!articles.length}}" class="card empty-card">
-      <text class="muted">{{emptyText}}</text>
+      <text class="empty-title">{{emptyText}}</text>
     </view>
   </block>
 </view>

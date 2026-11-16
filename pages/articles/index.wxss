@@ -1,6 +1,235 @@
-.page-intro { padding: 12rpx 8rpx 22rpx; }
-.article-card { padding: 30rpx; }
-.title { font-size: 36rpx; font-weight: 900; }
-.muted { display: block; margin-top: 10rpx; color: #66758a; }
-.file-meta { display: block; margin-top: 14rpx; color: #1168df; font-size: 26rpx; }
-.empty-card { padding: 30rpx; }
+.materials-page {
+  padding: 26rpx 24rpx 48rpx;
+}
+
+.page-intro {
+  padding: 10rpx 10rpx 30rpx;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 12rpx;
+  color: #2f8191;
+  font-size: 20rpx;
+  font-weight: 800;
+  letter-spacing: 6rpx;
+}
+
+.intro-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.intro-copy {
+  min-width: 0;
+}
+
+.page-title {
+  display: block;
+  color: #0b1f3b;
+  font-size: 48rpx;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.page-summary {
+  display: block;
+  margin-top: 10rpx;
+  color: #75849a;
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+
+.material-count {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  margin-left: 20rpx;
+  padding-bottom: 4rpx;
+  color: #8b98aa;
+}
+
+.count-number {
+  margin-right: 6rpx;
+  color: #17345d;
+  font-size: 34rpx;
+  font-weight: 800;
+}
+
+.count-label {
+  font-size: 22rpx;
+}
+
+.material-card {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 18rpx;
+  border: 1rpx solid rgba(14, 44, 79, .07);
+  border-radius: 24rpx;
+  background: #ffffff;
+  box-shadow: 0 12rpx 34rpx rgba(15, 45, 79, .07);
+}
+
+.material-main {
+  display: flex;
+  align-items: flex-start;
+  padding: 28rpx 28rpx 22rpx;
+}
+
+.file-badge {
+  flex: none;
+  display: flex;
+  width: 84rpx;
+  height: 96rpx;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12rpx 12rpx 20rpx 12rpx;
+  background: linear-gradient(155deg, #173a66, #286f86);
+  box-shadow: 0 8rpx 18rpx rgba(23, 58, 102, .18);
+}
+
+.file-type {
+  max-width: 70rpx;
+  color: #ffffff;
+  font-size: 20rpx;
+  font-weight: 800;
+  letter-spacing: 1rpx;
+  text-align: center;
+  word-break: break-all;
+}
+
+.material-copy {
+  flex: 1;
+  min-width: 0;
+  margin-left: 22rpx;
+  padding-right: 32rpx;
+}
+
+.material-title {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #0b1f3b;
+  font-size: 32rpx;
+  font-weight: 800;
+  line-height: 1.35;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.material-summary {
+  display: block;
+  overflow: hidden;
+  margin-top: 8rpx;
+  color: #6f7f94;
+  font-size: 24rpx;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  margin-top: 14rpx;
+  color: #6f7f94;
+  font-size: 22rpx;
+}
+
+.file-name {
+  overflow: hidden;
+  max-width: 360rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-size {
+  flex: none;
+  margin-left: 12rpx;
+  padding-left: 12rpx;
+  border-left: 1rpx solid #d9e1e9;
+}
+
+.file-index {
+  position: absolute;
+  top: 26rpx;
+  right: 24rpx;
+  color: #c0cad5;
+  font-size: 20rpx;
+  font-weight: 800;
+  letter-spacing: 2rpx;
+}
+
+.material-actions {
+  display: flex;
+  min-height: 76rpx;
+  border-top: 1rpx solid #edf1f5;
+  background: #fbfcfe;
+}
+
+.material-action {
+  flex: 1;
+  height: 76rpx;
+  margin: 0;
+  padding: 0 8rpx;
+  border-radius: 0;
+  background: transparent;
+  color: #556b84;
+  font-size: 25rpx;
+  font-weight: 700;
+  line-height: 76rpx;
+}
+
+.material-action + .material-action {
+  border-left: 1rpx solid #e6ebf0;
+}
+
+.material-action::after {
+  display: none;
+}
+
+.material-action[disabled] {
+  color: #9ba8b6;
+  background: #f5f7f9;
+  opacity: 1;
+}
+
+.action-primary {
+  color: #1769cf;
+}
+
+.action-share {
+  color: #257687;
+}
+
+.article-card {
+  margin-bottom: 18rpx;
+  padding: 30rpx;
+}
+
+.article-title {
+  display: block;
+  color: #0b1f3b;
+  font-size: 34rpx;
+  font-weight: 850;
+}
+
+.empty-card {
+  padding: 72rpx 30rpx;
+  text-align: center;
+}
+
+.empty-mark {
+  display: block;
+  color: #2f8191;
+  font-size: 42rpx;
+}
+
+.empty-title {
+  display: block;
+  margin-top: 8rpx;
+  color: #17345d;
+  font-size: 30rpx;
+  font-weight: 800;
+}

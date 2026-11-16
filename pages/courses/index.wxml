@@ -1,32 +1,70 @@
 <view class="page">
-  <view class="courses-intro card">
-    <text class="eyebrow">INTEREST / GROWTH</text>
+  <view class="courses-hero">
+    <view class="hero-panel hero-panel-left">
+      <image
+        class="hero-image hero-image-programming"
+        src="/assets/courses/programming-workshop-v1.jpg"
+        mode="aspectFill"
+      ></image>
+    </view>
+    <view class="hero-panel hero-panel-right">
+      <image
+        class="hero-image hero-image-interest"
+        src="/assets/home/interest-workshop-v2.jpg"
+        mode="aspectFill"
+      ></image>
+    </view>
+    <view class="hero-split"></view>
+    <view class="hero-shade"></view>
+    <view class="hero-kicker">
+      <text class="eyebrow">INTEREST / GROWTH</text>
+      <text class="hero-mark">LINGZHI</text>
+    </view>
     <text class="page-title">兴趣与素质课程</text>
-    <text class="page-summary">从会做题，到会表达、会创造，给孩子更多发现自己的机会。</text>
+    <text class="page-summary">从会做题，到会表达、会创造，让孩子在真正喜欢的事情里发现自己。</text>
+    <view class="hero-footer">
+      <text class="hero-caption">COURSE DIRECTORY</text>
+      <view class="hero-stat">
+        <text class="hero-count">{{courses.length}}</text>
+        <text class="hero-unit">个探索方向</text>
+      </view>
+    </view>
   </view>
 
   <view class="list-heading">
-    <text class="list-title">探索方向</text>
-    <text class="list-count">{{courses.length}} 个方向</text>
+    <view>
+      <text class="section-eyebrow">EXPLORE</text>
+      <text class="list-title">探索方向</text>
+    </view>
+    <text class="list-note">从兴趣出发 · 向成长延伸</text>
   </view>
 
   <view
-    class="card course-card"
+    class="course-card"
     wx:for="{{courses}}"
     wx:key="id"
+    wx:for-index="courseIndex"
     data-id="{{item.id}}"
     bindtap="goDetail"
   >
-    <view class="course-card-head">
-      <view class="course-title-wrap">
-        <text class="course-category">{{item.category}}</text>
-        <text class="course-title">{{item.title}}</text>
-      </view>
-      <text class="course-arrow">›</text>
+    <view class="course-visual">
+      <image class="course-image" src="{{item.image}}" mode="aspectFill"></image>
+      <view class="course-image-shade"></view>
+      <text class="course-number">0{{courseIndex + 1}}</text>
     </view>
-    <text class="course-summary">{{item.summary}}</text>
-    <view class="tag-row" wx:if="{{item.tags && item.tags.length}}">
-      <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text>
+    <view class="course-content">
+      <view class="course-card-head">
+        <view class="course-title-wrap">
+          <text class="course-title">{{item.title}}</text>
+        </view>
+        <view class="course-action">
+          <text class="course-arrow">→</text>
+        </view>
+      </view>
+      <text class="course-summary">{{item.summary}}</text>
+      <view class="tag-row" wx:if="{{item.tags && item.tags.length}}">
+        <text class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+      </view>
     </view>
   </view>
 

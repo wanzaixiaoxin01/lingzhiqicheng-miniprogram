@@ -1,9 +1,8 @@
-import { SELF_STUDY_GALLERY, SELF_STUDY_ROOMS } from "../../utils/self-study-room";
+import { SELF_STUDY_ROOMS } from "../../utils/self-study-room";
 
 Page({
   data: {
-    rooms: SELF_STUDY_ROOMS,
-    gallery: SELF_STUDY_GALLERY
+    rooms: SELF_STUDY_ROOMS
   },
   goAppointment() {
     wx.navigateTo({ url: "/pages/appointment/index?source=self-study" });

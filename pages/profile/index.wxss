@@ -1,5 +1,466 @@
-.profile-card { padding: 30rpx; }
-.title { font-size: 36rpx; font-weight: 900; }
-.muted { display: block; margin-top: 10rpx; color: #66758a; }
-.primary-button { margin-top: 24rpx; }
-.ghost-button { margin-top: 18rpx; height: 84rpx; border-radius: 16rpx; background: #edf7ff; color: #1168df; font-weight: 700; line-height: 84rpx; }
+.profile-page {
+  padding: 28rpx 24rpx;
+  padding-bottom: 184rpx;
+}
+
+.profile-header {
+  padding: 8rpx 10rpx 28rpx;
+}
+
+.eyebrow,
+.section-kicker,
+.auth-kicker,
+.state-kicker,
+.student-label {
+  display: block;
+  color: #347d8b;
+  font-size: 19rpx;
+  font-weight: 800;
+  letter-spacing: 5rpx;
+}
+
+.page-title {
+  display: block;
+  margin-top: 10rpx;
+  color: #0b1f3b;
+  font-size: 50rpx;
+  font-weight: 900;
+}
+
+.page-summary {
+  display: block;
+  margin-top: 8rpx;
+  color: #75849a;
+  font-size: 26rpx;
+}
+
+.state-card,
+.auth-card,
+.student-card,
+.identity-row,
+.enrollment-card {
+  border: 1rpx solid rgba(14, 44, 79, .07);
+  border-radius: 24rpx;
+  background: #ffffff;
+  box-shadow: 0 12rpx 34rpx rgba(15, 45, 79, .07);
+}
+
+.state-card {
+  padding: 64rpx 34rpx;
+  text-align: center;
+}
+
+.state-title {
+  display: block;
+  margin-top: 14rpx;
+  color: #102542;
+  font-size: 32rpx;
+  font-weight: 800;
+}
+
+.state-copy {
+  display: block;
+  margin-top: 16rpx;
+  color: #708096;
+  font-size: 25rpx;
+  line-height: 1.7;
+}
+
+.state-button {
+  width: 240rpx;
+  height: 72rpx;
+  margin-top: 28rpx;
+  border-radius: 36rpx;
+  background: #173a66;
+  color: #ffffff;
+  font-size: 25rpx;
+  line-height: 72rpx;
+}
+
+.loading-dot {
+  width: 18rpx;
+  height: 18rpx;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #2d8090;
+  box-shadow: 28rpx 0 #89aeb7, -28rpx 0 #173a66;
+}
+
+.auth-card {
+  position: relative;
+  overflow: hidden;
+  padding: 42rpx 34rpx 34rpx;
+}
+
+.auth-card::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 6rpx;
+  background: linear-gradient(90deg, #173a66, #2d8090);
+  content: "";
+}
+
+.auth-index {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  color: #c1ccd7;
+  font-size: 22rpx;
+  font-weight: 800;
+}
+
+.auth-title {
+  display: block;
+  margin-top: 22rpx;
+  color: #0b1f3b;
+  font-size: 38rpx;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.auth-copy {
+  display: block;
+  margin-top: 18rpx;
+  color: #6f7f94;
+  font-size: 25rpx;
+  line-height: 1.7;
+}
+
+.phone-auth-button {
+  height: 86rpx;
+  margin-top: 32rpx;
+  border-radius: 14rpx;
+  background: linear-gradient(135deg, #173a66, #2d8090);
+  color: #ffffff;
+  font-size: 29rpx;
+  font-weight: 800;
+  line-height: 86rpx;
+}
+
+.identity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 28rpx;
+}
+
+.identity-label {
+  display: block;
+  color: #8995a5;
+  font-size: 21rpx;
+}
+
+.identity-phone {
+  display: block;
+  margin-top: 5rpx;
+  color: #17345d;
+  font-size: 28rpx;
+  font-weight: 800;
+  letter-spacing: 1rpx;
+}
+
+.identity-status {
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  background: #e7f4f2;
+  color: #24756d;
+  font-size: 21rpx;
+  font-weight: 700;
+}
+
+.student-switcher {
+  width: 100%;
+  margin: 22rpx 0 16rpx;
+  white-space: nowrap;
+}
+
+.student-switcher-inner {
+  display: inline-flex;
+}
+
+.student-chip {
+  min-width: 150rpx;
+  height: 66rpx;
+  margin: 0 12rpx 0 0;
+  padding: 0 30rpx;
+  border: 1rpx solid #dbe3eb;
+  border-radius: 33rpx;
+  background: #ffffff;
+  color: #6d7d91;
+  font-size: 25rpx;
+  line-height: 66rpx;
+}
+
+.student-chip::after,
+.support-button::after,
+.phone-auth-button::after,
+.state-button::after {
+  display: none;
+}
+
+.student-chip-active {
+  border-color: #173a66;
+  background: #173a66;
+  color: #ffffff;
+}
+
+.student-card {
+  margin-top: 22rpx;
+  padding: 30rpx;
+  background: linear-gradient(145deg, #17375f, #285f78);
+  color: #ffffff;
+}
+
+.student-topline,
+.student-main,
+.attendance-heading,
+.enrollment-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.student-label {
+  color: #9fd0d7;
+}
+
+.student-grade {
+  color: rgba(255, 255, 255, .75);
+  font-size: 23rpx;
+}
+
+.student-main {
+  margin-top: 24rpx;
+}
+
+.student-name {
+  display: block;
+  font-size: 42rpx;
+  font-weight: 900;
+}
+
+.student-school {
+  display: block;
+  margin-top: 8rpx;
+  color: rgba(255, 255, 255, .68);
+  font-size: 23rpx;
+}
+
+.attendance-total {
+  min-width: 112rpx;
+  text-align: right;
+}
+
+.attendance-number {
+  display: block;
+  color: #ffffff;
+  font-size: 48rpx;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.attendance-unit {
+  display: block;
+  margin-top: 8rpx;
+  color: #a9d2d8;
+  font-size: 20rpx;
+}
+
+.section-block {
+  margin-top: 34rpx;
+}
+
+.section-heading {
+  margin: 0 8rpx 16rpx;
+}
+
+.section-title {
+  display: block;
+  margin-top: 7rpx;
+  color: #0b1f3b;
+  font-size: 34rpx;
+  font-weight: 900;
+}
+
+.enrollment-card {
+  padding: 12rpx 28rpx;
+}
+
+.enrollment-card + .enrollment-card {
+  margin-top: 12rpx;
+}
+
+.enrollment-row {
+  min-height: 74rpx;
+  border-bottom: 1rpx solid #edf1f5;
+}
+
+.enrollment-row:last-child {
+  border-bottom: 0;
+}
+
+.field-label {
+  color: #8491a2;
+  font-size: 23rpx;
+}
+
+.field-value {
+  max-width: 430rpx;
+  color: #17345d;
+  font-size: 26rpx;
+  font-weight: 700;
+  text-align: right;
+}
+
+.attendance-timeline {
+  overflow: hidden;
+  border: 1rpx solid rgba(14, 44, 79, .07);
+  border-radius: 24rpx;
+  background: #ffffff;
+  box-shadow: 0 12rpx 34rpx rgba(15, 45, 79, .06);
+}
+
+.attendance-item {
+  display: flex;
+  padding: 26rpx 28rpx 0;
+}
+
+.timeline-mark {
+  position: relative;
+  flex: none;
+  width: 34rpx;
+}
+
+.timeline-mark::after {
+  position: absolute;
+  top: 18rpx;
+  bottom: -26rpx;
+  left: 8rpx;
+  width: 2rpx;
+  background: #dbe5ea;
+  content: "";
+}
+
+.attendance-item:last-child .timeline-mark::after {
+  display: none;
+}
+
+.timeline-dot {
+  position: relative;
+  z-index: 1;
+  width: 16rpx;
+  height: 16rpx;
+  margin-top: 8rpx;
+  border: 5rpx solid #d9eef0;
+  border-radius: 50%;
+  background: #2d8090;
+}
+
+.attendance-body {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 26rpx;
+  border-bottom: 1rpx solid #edf1f5;
+}
+
+.attendance-item:last-child .attendance-body {
+  border-bottom: 0;
+}
+
+.attendance-date {
+  color: #102542;
+  font-size: 28rpx;
+  font-weight: 850;
+}
+
+.attendance-campus {
+  color: #7c8b9e;
+  font-size: 22rpx;
+}
+
+.attendance-meta {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.attendance-period {
+  padding: 5rpx 12rpx;
+  border-radius: 999rpx;
+  background: #e7f4ef;
+  color: #21835e;
+  font-size: 21rpx;
+  font-weight: 750;
+}
+
+.attendance-course {
+  display: block;
+  margin-top: 10rpx;
+  color: #357b89;
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.attendance-note {
+  display: block;
+  margin-top: 8rpx;
+  color: #718096;
+  font-size: 23rpx;
+  line-height: 1.55;
+}
+
+.timeline-empty,
+.inline-empty {
+  padding: 44rpx 28rpx;
+  color: #8290a2;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.empty-title,
+.empty-copy {
+  display: block;
+}
+
+.empty-title {
+  color: #17345d;
+  font-size: 27rpx;
+  font-weight: 800;
+}
+
+.empty-copy {
+  margin-top: 8rpx;
+  color: #8b98a8;
+  font-size: 22rpx;
+}
+
+.support-actions {
+  display: flex;
+  margin-top: 34rpx;
+  gap: 14rpx;
+}
+
+.support-button {
+  flex: 1;
+  height: 76rpx;
+  margin: 0;
+  border: 1rpx solid #d7e0e9;
+  border-radius: 14rpx;
+  background: #ffffff;
+  color: #526a83;
+  font-size: 25rpx;
+  font-weight: 700;
+  line-height: 76rpx;
+}
+
+.support-primary {
+  border-color: #173a66;
+  background: #173a66;
+  color: #ffffff;
+}
+
+.no-match-card {
+  margin-top: 22rpx;
+}

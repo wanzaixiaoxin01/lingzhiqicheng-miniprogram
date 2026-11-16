@@ -1,91 +1,94 @@
-<scroll-view class="self-study-page" scroll-y>
+<scroll-view class="self-study-page" scroll-y enhanced show-scrollbar="false">
   <view class="hero">
-    <view class="hero-orbit hero-orbit-one"></view>
-    <view class="hero-orbit hero-orbit-two"></view>
-    <view class="hero-spark spark-one"></view>
-    <view class="hero-spark spark-two"></view>
-    <view class="hero-brand">
-      <image class="hero-logo" src="../../assets/lingzhi-logo-144.png" mode="aspectFit"></image>
-      <view>
-        <text class="brand-name">灵智启程</text>
-        <text class="brand-en">LINGZHI VOYAGE</text>
+    <image
+      class="hero-image"
+      src="../../assets/home/learning-space-interior-v2.jpg"
+      mode="aspectFill"
+    ></image>
+    <view class="hero-shade"></view>
+
+    <view class="hero-topline">
+      <view class="hero-brand">
+        <image class="hero-logo" src="../../assets/lingzhi-logo-144.png" mode="aspectFit"></image>
+        <view>
+          <text class="brand-name">灵智启程</text>
+          <text class="brand-en">LINGZHI VOYAGE</text>
+        </view>
       </view>
+      <text class="hero-edition">STUDY SPACE · 2026</text>
     </view>
-    <text class="hero-kicker">AI SMART STUDY SPACE</text>
-    <text class="hero-title">AI 智能自习室</text>
-    <text class="hero-subtitle">让学习有计划，让成长看得见</text>
-    <view class="hero-points">
-      <view class="hero-point"><text class="point-index">01</text><text>自习托管</text></view>
-      <view class="hero-point"><text class="point-index">02</text><text>AI 学习规划</text></view>
-      <view class="hero-point"><text class="point-index">03</text><text>作业辅导</text></view>
+
+    <view class="hero-content">
+      <text class="hero-kicker">A BETTER PLACE TO LEARN</text>
+      <text class="hero-title">AI 智能</text>
+      <text class="hero-title hero-title-accent">自习室</text>
+      <text class="hero-subtitle">安静、稳定、有陪伴，让孩子真正进入学习状态。</text>
+
+      <view class="hero-features">
+        <view class="hero-feature"><text class="feature-index">01</text><text>自习托管</text></view>
+        <view class="hero-feature"><text class="feature-index">02</text><text>AI 学习规划</text></view>
+        <view class="hero-feature"><text class="feature-index">03</text><text>作业辅导</text></view>
+      </view>
+
+      <button class="hero-button" bindtap="goAppointment">预约到店体验 <text>→</text></button>
     </view>
-    <button class="hero-button" bindtap="goAppointment">预约到店体验</button>
   </view>
 
-  <view class="intro-section">
-    <view class="section-overline">ABOUT THE SPACE</view>
-    <text class="section-title">把每天的学习，变成看得见的进步</text>
+  <view class="editorial-intro">
+    <view class="editorial-index">01 / ABOUT THE SPACE</view>
+    <text class="section-title intro-title">把每天的学习，变成看得见的进步</text>
     <text class="section-copy">灵智启程 AI 智能自习室，为孩子提供安静、稳定、有陪伴的学习空间。结合学习规划、作业辅导和习惯培养，让每一次专注都有反馈。</text>
-  </view>
-
-  <view class="section-heading">
-    <view>
-      <text class="section-overline">OUR LOCATIONS</text>
-      <text class="section-title compact-title">三个学习空间</text>
+    <view class="intro-facts">
+      <view class="intro-fact"><text class="fact-value">3个</text><text class="fact-label">已开放学习空间</text></view>
+      <view class="intro-fact"><text class="fact-value">全程</text><text class="fact-label">学习过程陪伴</text></view>
     </view>
-    <text class="section-count">0{{rooms.length}} 个服务点</text>
   </view>
 
-  <view class="room-list">
-    <view class="room-card room-card-{{index}}" wx:for="{{rooms}}" wx:key="id">
-      <view class="room-card-top">
-        <view class="room-number">0{{index + 1}}</view>
-        <view class="room-heading">
-          <text class="room-name">{{item.name}}</text>
-          <text class="room-label">AI 智能自习室</text>
+  <view class="locations-section">
+    <view class="section-heading">
+      <view>
+        <text class="section-overline">OUR LOCATIONS</text>
+        <text class="section-title">离你更近的学习空间</text>
+      </view>
+    </view>
+
+    <view class="location-list">
+      <view class="location-card location-card-{{index}}" wx:for="{{rooms}}" wx:key="id">
+        <view class="location-topline">
+          <text class="location-index">0{{index + 1}}</text>
+          <text class="location-type">LINGZHI STUDY SPACE</text>
         </view>
-      </view>
-      <view class="room-address">
-        <text class="address-mark">⌖</text>
-        <text class="address-text">{{item.address}}</text>
-      </view>
-      <view class="room-actions">
-        <button class="room-action light-action" data-address="{{item.address}}" bindtap="copyAddress">复制地址</button>
-        <button class="room-action dark-action" data-phone="{{item.phone}}" bindtap="callRoom">电话咨询</button>
-      </view>
-    </view>
-  </view>
-
-  <view class="gallery-section">
-    <view class="section-overline">REAL STUDY SPACE</view>
-    <text class="section-title">真实的学习环境</text>
-    <text class="section-copy gallery-copy">这里不是一张效果图，而是孩子每天真正使用的学习空间。</text>
-    <view class="gallery-grid">
-      <view class="gallery-item" wx:for="{{gallery}}" wx:key="src">
-        <image class="gallery-image" src="{{item.src}}" mode="aspectFill" lazy-load></image>
-        <view class="gallery-caption">
-          <text class="gallery-title">{{item.title}}</text>
-          <text class="gallery-text">{{item.caption}}</text>
+        <text class="location-name">{{item.name}}</text>
+        <view class="location-address">
+          <text class="address-label">ADDRESS</text>
+          <text class="address-text">{{item.address}}</text>
+        </view>
+        <view class="location-actions">
+          <button class="location-action secondary-action" data-address="{{item.address}}" bindtap="copyAddress">复制地址</button>
+          <button class="location-action primary-action" data-phone="{{item.phone}}" bindtap="callRoom">电话咨询 <text>→</text></button>
         </view>
       </view>
     </view>
   </view>
 
-  <view class="benefits-section">
-    <view class="section-overline">WHY LINGZHI</view>
+  <view class="services-section">
+    <text class="section-overline">WHY LINGZHI</text>
     <text class="section-title">专注学习，也有人陪伴</text>
-    <view class="benefit-list">
-      <view class="benefit-item">
-        <text class="benefit-icon">学</text>
-        <view><text class="benefit-title">安静托管</text><text class="benefit-copy">固定学习时段，建立稳定节奏</text></view>
+    <view class="service-grid">
+      <view class="service-item">
+        <text class="service-number">01</text>
+        <text class="service-title">安静托管</text>
+        <text class="service-copy">固定学习时段，建立稳定节奏</text>
       </view>
-      <view class="benefit-item">
-        <text class="benefit-icon mint-icon">AI</text>
-        <view><text class="benefit-title">智能规划</text><text class="benefit-copy">根据学习状态调整每日计划</text></view>
+      <view class="service-item">
+        <text class="service-number">02</text>
+        <text class="service-title">智能规划</text>
+        <text class="service-copy">根据学习状态调整每日计划</text>
       </view>
-      <view class="benefit-item">
-        <text class="benefit-icon gold-icon">伴</text>
-        <view><text class="benefit-title">老师陪伴</text><text class="benefit-copy">及时答疑，帮助孩子完成任务</text></view>
+      <view class="service-item">
+        <text class="service-number">03</text>
+        <text class="service-title">成长反馈</text>
+        <text class="service-copy">沉淀学习记录，让阶段成长清晰可见</text>
       </view>
     </view>
   </view>
@@ -93,8 +96,9 @@
   <view class="contact-section">
     <text class="contact-kicker">START A BETTER STUDY ROUTINE</text>
     <text class="contact-title">来服务点看看，找到适合孩子的学习节奏</text>
-    <button class="contact-button" bindtap="goAppointment">预约到店</button>
+    <button class="contact-button" bindtap="goAppointment">预约到店 <text>→</text></button>
+    <view class="contact-rule"></view>
     <view class="hotline-row"><text>联营热线</text><text class="hotline">400-900-6368</text></view>
-    <view class="hotline-row"><text class="hotline-muted">报名热线</text><text class="hotline hotline-muted">188 3952 0239</text></view>
+    <view class="hotline-row"><text>报名热线</text><text class="hotline">188 3952 0239</text></view>
   </view>
 </scroll-view>
