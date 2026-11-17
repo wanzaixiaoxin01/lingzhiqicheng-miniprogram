@@ -1,17 +1,6 @@
 <view class="tab-bar">
   <block wx:for="{{tabs}}" wx:key="pagePath">
-    <button
-      wx:if="{{item.requiresPhone && !phoneAuthorized}}"
-      class="tab-item tab-button"
-      open-type="getPhoneNumber"
-      loading="{{authorizing}}"
-      bindgetphonenumber="authorizeAndSwitch"
-    >
-      <view class="tab-indicator"></view>
-      <text class="tab-label">{{item.text}}</text>
-    </button>
     <view
-      wx:else
       class="tab-item {{selected === index ? 'tab-item-selected' : ''}}"
       data-index="{{index}}"
       data-path="{{item.pagePath}}"

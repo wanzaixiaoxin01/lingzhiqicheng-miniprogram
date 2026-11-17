@@ -9,17 +9,17 @@ const markup = readFileSync(resolve(root, "custom-tab-bar/index.wxml"), "utf8");
 const script = readFileSync(resolve(root, "custom-tab-bar/index.js"), "utf8");
 const styles = readFileSync(resolve(root, "custom-tab-bar/index.wxss"), "utf8");
 
-test("the unauthorised My tab is the explicit WeChat phone authorisation trigger", () => {
-  assert.match(markup, /open-type="getPhoneNumber"/);
-  assert.match(markup, /bindgetphonenumber="authorizeAndSwitch"/);
-  assert.match(script, /authorizeAndSwitch/);
-  assert.match(script, /authorizeParentWithPhone/);
+test("the My tab always opens the profile page before phone authorisation", () => {
+  assert.doesNotMatch(markup, /open-type="getPhoneNumber"/);
+  assert.doesNotMatch(markup, /bindgetphonenumber="authorizeAndSwitch"/);
+  assert.doesNotMatch(script, /authorizeAndSwitch/);
+  assert.match(markup, /bindtap="switchTab"/);
   assert.match(script, /\/pages\/profile\/index/);
 });
 
-test("authorised parents switch to My without requesting their phone again", () => {
-  assert.match(script, /isParentPhoneAuthorized/);
-  assert.match(markup, /phoneAuthorized/);
+test("all bottom tabs use the same native tab switching interaction", () => {
+  assert.doesNotMatch(script, /isParentPhoneAuthorized/);
+  assert.doesNotMatch(markup, /phoneAuthorized/);
   assert.match(markup, /bindtap="switchTab"/);
-  assert.match(styles, /\.tab-button/);
+  assert.doesNotMatch(styles, /\.tab-button/);
 });
