@@ -12,6 +12,7 @@
     "pages/growth/index",
     "pages/profile/index"
   ],
+  "lazyCodeLoading": "requiredComponents",
   "window": {
     "navigationBarTitleText": "灵智启程",
     "navigationBarBackgroundColor": "#ffffff",

@@ -28,7 +28,20 @@
   },
   "simulatorPluginLibVersion": {},
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      {
+        "type": "folder",
+        "value": "assets/posters"
+      },
+      {
+        "type": "folder",
+        "value": "assets/self-study"
+      },
+      {
+        "type": "file",
+        "value": "assets/.DS_Store"
+      }
+    ],
     "include": []
   },
   "editorSetting": {}
