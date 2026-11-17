@@ -33,30 +33,8 @@ test("the third tab is an AI learning machine conversion page", () => {
   assert.match(productScript, /goAppointment\(\)/);
   assert.match(productScript, /\/pages\/appointment\/index\?source=ai-learning-machine/);
 
-  const expectedImages = [
-    "haibao-1.jpg",
-    "haibao-2.jpg",
-    "haibao-3.jpg",
-    "01.jpg",
-    "02.jpg",
-    "03.jpg",
-    "04.jpg",
-    "05.jpg",
-    "06.jpg",
-    "07.jpg",
-    "08.jpg"
-  ];
-  const imagePaths = [
-    ...productScript.matchAll(/"(\/assets\/learn-machine\/[^"]+)"/g)
-  ].map((match) => match[1]);
-
-  assert.deepEqual(
-    imagePaths,
-    expectedImages.map((file) => `/assets/learn-machine/${file}`)
-  );
-  for (const imagePath of imagePaths) {
-    assert.ok(existsSync(resolve(miniProgramRoot, imagePath.slice(1))), `${imagePath} must exist`);
-  }
+  assert.match(productScript, /getLearningMachinePosters/);
+  assert.doesNotMatch(productScript, /\/assets\/learn-machine\//);
 });
 
 test("bottom navigation labels use a two-step larger font", () => {

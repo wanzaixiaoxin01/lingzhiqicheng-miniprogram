@@ -1,5 +1,10 @@
 <view class="page">
-  <view class="poster-stream">
+  <view wx:if="{{loadingPosters}}" class="poster-state">
+    <view class="poster-loading-dot"></view>
+    <text>正在加载设备介绍</text>
+  </view>
+
+  <view wx:elif="{{marketingImages.length}}" class="poster-stream">
     <image
       wx:for="{{marketingImages}}"
       wx:key="*this"
@@ -9,6 +14,12 @@
       lazy-load="{{index > 1}}"
       show-menu-by-longpress="false"
     />
+  </view>
+
+  <view wx:else class="poster-state poster-empty">
+    <text class="poster-state-kicker">LINGZHI PAD</text>
+    <text class="poster-state-title">暂无学习机海报</text>
+    <text class="poster-state-copy">可先咨询设备配置与到店体验</text>
   </view>
 
   <view class="conversion-card">

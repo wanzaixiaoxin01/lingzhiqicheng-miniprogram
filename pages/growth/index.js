@@ -1,24 +1,31 @@
+import { getLearningMachinePosters } from "../../services/api";
+
 Page({
   data: {
-    marketingImages: [
-      "/assets/learn-machine/haibao-1.jpg",
-      "/assets/learn-machine/haibao-2.jpg",
-      "/assets/learn-machine/haibao-3.jpg",
-      "/assets/learn-machine/01.jpg",
-      "/assets/learn-machine/02.jpg",
-      "/assets/learn-machine/03.jpg",
-      "/assets/learn-machine/04.jpg",
-      "/assets/learn-machine/05.jpg",
-      "/assets/learn-machine/06.jpg",
-      "/assets/learn-machine/07.jpg",
-      "/assets/learn-machine/08.jpg"
-    ]
+    marketingImages: [],
+    loadingPosters: true
+  },
+
+  onLoad() {
+    this.loadPosters();
   },
 
   onShow() {
     const tabBar = this.getTabBar && this.getTabBar();
     if (tabBar) {
       tabBar.setData({ selected: 2 });
+    }
+  },
+
+  async loadPosters() {
+    try {
+      const result = await getLearningMachinePosters();
+      const marketingImages = Array.isArray(result && result.posters)
+        ? result.posters.map((poster) => poster.url).filter(Boolean)
+        : [];
+      this.setData({ marketingImages, loadingPosters: false });
+    } catch (error) {
+      this.setData({ marketingImages: [], loadingPosters: false });
     }
   },
 

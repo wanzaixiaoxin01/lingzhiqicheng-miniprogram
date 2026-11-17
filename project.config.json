@@ -38,6 +38,10 @@
         "value": "assets/self-study"
       },
       {
+        "type": "folder",
+        "value": "assets/learn-machine"
+      },
+      {
         "type": "file",
         "value": "assets/.DS_Store"
       }

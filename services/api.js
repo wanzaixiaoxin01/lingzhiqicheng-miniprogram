@@ -4,6 +4,10 @@ export function getHome() {
   return request("/api/public/home");
 }
 
+export function getLearningMachinePosters() {
+  return request("/api/public/learning-machine-posters");
+}
+
 export function getCourses(category) {
   return request(`/api/public/courses${category ? `?category=${encodeURIComponent(category)}` : ""}`);
 }
