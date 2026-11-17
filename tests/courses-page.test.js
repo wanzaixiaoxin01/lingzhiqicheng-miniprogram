@@ -62,16 +62,26 @@ test("legacy service courses are filtered while interest courses remain visible"
   );
 });
 
-test("course page presents one unified interest course list", () => {
+test("activity page presents one unified interest activity list", () => {
   const wxml = readFileSync(resolve(miniProgramRoot, "pages/courses/index.wxml"), "utf8");
   const pageConfig = JSON.parse(readFileSync(resolve(miniProgramRoot, "pages/courses/index.json"), "utf8"));
 
-  assert.match(wxml, />兴趣与素质课程</);
+  assert.match(wxml, />兴趣活动</);
   assert.doesNotMatch(wxml, /&amp;/);
   assert.doesNotMatch(wxml, /category-row/);
   assert.doesNotMatch(wxml, /category-active/);
-  assert.doesNotMatch(wxml, />课程服务</);
-  assert.equal(pageConfig.navigationBarTitleText, "兴趣课程");
+  assert.doesNotMatch(wxml, /课程|课次|试听|授课|教学/);
+  assert.equal(pageConfig.navigationBarTitleText, "兴趣活动");
+});
+
+test("activity details use visit-oriented labels", () => {
+  const detailMarkup = readFileSync(resolve(miniProgramRoot, "pages/course-detail/index.wxml"), "utf8");
+  const detailConfig = JSON.parse(readFileSync(resolve(miniProgramRoot, "pages/course-detail/index.json"), "utf8"));
+
+  assert.equal(detailConfig.navigationBarTitleText, "活动详情");
+  assert.match(detailMarkup, /活动安排/);
+  assert.match(detailMarkup, /预约到店体验/);
+  assert.doesNotMatch(detailMarkup, /课程|试听|授课|教学/);
 });
 
 test("course page uses a branded editorial catalog with numbered directions", () => {

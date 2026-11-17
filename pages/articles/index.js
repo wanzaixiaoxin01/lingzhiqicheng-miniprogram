@@ -5,9 +5,9 @@ Page({
   ...MATERIAL_ACTIONS,
   data: {
     activeType: "material",
-    pageTitle: "学习资料",
-    pageSummary: "后台上传的学习资料",
-    emptyText: "暂无学习资料",
+    pageTitle: "空间公告",
+    pageSummary: "查看场地开放、活动安排与服务通知",
+    emptyText: "暂无空间公告",
     articles: [],
     materials: [],
     downloadingId: "",
@@ -20,8 +20,8 @@ Page({
   async loadContent(type) {
     const contentType = ["news", "activity"].includes(type) ? type : "material";
     const pageInfo = {
-      material: { title: "学习资料", summary: "后台上传的学习资料", empty: "暂无学习资料" },
-      news: { title: "教育动态", summary: "灵智启程教育动态", empty: "暂无教育动态" },
+      material: { title: "空间公告", summary: "查看场地开放、活动安排与服务通知", empty: "暂无空间公告" },
+      news: { title: "品牌动态", summary: "灵智启程品牌动态", empty: "暂无品牌动态" },
       activity: { title: "活动风采", summary: "灵智启程活动风采", empty: "暂无活动内容" }
     }[contentType];
 

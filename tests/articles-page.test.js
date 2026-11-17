@@ -9,12 +9,15 @@ const pageScript = readFileSync(resolve(miniProgramRoot, "pages/articles/index.j
 const pageMarkup = readFileSync(resolve(miniProgramRoot, "pages/articles/index.wxml"), "utf8");
 const pageStyles = readFileSync(resolve(miniProgramRoot, "pages/articles/index.wxss"), "utf8");
 
-test("learning materials page directly renders uploaded materials without tabs", () => {
+test("space notice page directly renders uploaded notice files without tabs", () => {
   assert.doesNotMatch(pageScript, /tabs:/);
   assert.doesNotMatch(pageMarkup, /tab-row|请选择学习资料、教育动态或活动风采/);
   assert.match(pageScript, /getMaterials/);
   assert.match(pageMarkup, /wx:for="\{\{materials\}\}"/);
   assert.match(pageMarkup, /item\.file_name/);
+  assert.match(pageScript, /空间公告/);
+  assert.match(pageScript, /场地开放、活动安排与服务通知/);
+  assert.doesNotMatch(pageScript, /学习资料|教育动态/);
 });
 
 test("material cards expose preview and seamless share actions in the list", () => {

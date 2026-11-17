@@ -66,5 +66,6 @@ test("self-study page explains the location count once in plain language", () =>
 test("self-study services avoid teacher-led tutoring claims", () => {
   assert.match(pageWxml, /成长反馈/);
   assert.match(pageWxml, /沉淀学习记录，让阶段成长清晰可见/);
-  assert.doesNotMatch(pageWxml, /老师陪伴|及时答疑|过程支持|任务提醒/);
+  assert.match(pageWxml, /自主规划/);
+  assert.doesNotMatch(pageWxml, /老师陪伴|及时答疑|过程支持|任务提醒|作业辅导|学科辅导|老师授课/);
 });

@@ -14,8 +14,8 @@
     <view class="hero-copy">
       <text class="hero-kicker">LINGZHI SERVICE MODEL</text>
       <text class="hero-title">学习空间</text>
-      <text class="hero-title hero-title-accent">× AI 陪伴</text>
-      <text class="hero-summary">灵智启程以学习空间为基础，以 AI 学习陪伴支持日常学习，并通过高校参访、兴趣拓展和多元研习活动，帮助孩子发展爱好、开阔眼界。</text>
+      <text class="hero-title hero-title-accent">× 智能设备</text>
+      <text class="hero-summary">灵智启程以学习空间为基础，提供智能学习设备体验，并通过高校参访、兴趣拓展和文化活动，帮助孩子发展爱好、开阔眼界。</text>
       <view class="hero-paths">
         <text>SPACE</text>
         <text>AI</text>
@@ -23,7 +23,7 @@
       </view>
     </view>
     <view class="hero-appointment-entry" bindtap="goAppointment">
-      <text>预约体验</text>
+      <text>预约到店体验</text>
       <text class="hero-appointment-arrow">→</text>
     </view>
   </view>
@@ -62,12 +62,12 @@
       ></image>
       <view class="service-copy">
         <text class="service-index">02 · AI COMPANION</text>
-        <text class="service-title">AI 陪伴</text>
-        <text class="service-summary">把练习、复盘、语言表达和兴趣探索带进日常学习，提供及时提示与过程反馈。</text>
+        <text class="service-title">AI 学习机</text>
+        <text class="service-summary">展示智能学习设备的功能与使用场景，提供配置咨询和到店体验。</text>
         <view class="service-tags">
-          <text>练习复盘</text>
-          <text>语言表达</text>
-          <text>过程反馈</text>
+          <text>设备展示</text>
+          <text>功能体验</text>
+          <text>配置咨询</text>
         </view>
       </view>
     </view>
@@ -81,8 +81,8 @@
       ></image>
       <view class="service-copy">
         <text class="service-index">03 · FIELD</text>
-        <text class="service-title">兴趣研学</text>
-        <text class="service-summary">从高校参访到多元兴趣活动，让孩子接触更丰富的人、事与学习方式。</text>
+        <text class="service-title">兴趣活动</text>
+        <text class="service-summary">从高校参访到多元文化活动，让孩子接触更丰富的人、事与真实场景。</text>
         <view class="service-tags">
           <text>高校参访</text>
           <text>兴趣活动</text>
@@ -117,8 +117,8 @@
       <view class="appointment-orbit appointment-orbit-small"></view>
       <view class="appointment-copy">
         <text class="appointment-kicker">START HERE</text>
-        <text class="appointment-title">预约一次体验</text>
-        <text class="appointment-summary">到店体验学习空间与 AI 学习方案，为孩子找到更适合的成长路径。</text>
+        <text class="appointment-title">预约到店体验</text>
+        <text class="appointment-summary">到店了解学习空间与智能设备，获取适合的体验建议。</text>
       </view>
       <button class="appointment-cta" bindtap="goAppointment">立即预约</button>
     </view>

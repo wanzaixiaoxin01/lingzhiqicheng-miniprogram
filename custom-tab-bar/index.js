@@ -3,7 +3,7 @@ Component({
     selected: 0,
     tabs: [
       { pagePath: "/pages/home/index", text: "首页" },
-      { pagePath: "/pages/courses/index", text: "课程" },
+      { pagePath: "/pages/courses/index", text: "兴趣活动" },
       { pagePath: "/pages/growth/index", text: "AI学习机" },
       { pagePath: "/pages/profile/index", text: "我的" }
     ]

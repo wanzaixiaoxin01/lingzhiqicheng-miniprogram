@@ -14,13 +14,16 @@ test("appointment page presents a branded parent-facing consultation flow", () =
   );
 
   assert.match(wxml, /class="appointment-hero"/);
-  assert.match(wxml, />预约一次，更了解孩子适合什么</);
+  assert.match(wxml, />预约到店，了解空间与设备</);
   assert.match(wxml, />联系信息</);
   assert.match(wxml, />孩子情况</);
   assert.match(wxml, /1对1沟通/);
   assert.match(wxss, /\.appointment-hero\s*\{[^}]*#071a34/s);
   assert.match(wxss, /\.form-card\s*\{[^}]*margin-top:\s*-32rpx/s);
-  assert.equal(config.navigationBarTitleText, "预约体验");
+  assert.match(wxml, /体验建议/);
+  assert.match(wxml, /意向活动/);
+  assert.doesNotMatch(wxml, /课程建议|意向课程/);
+  assert.equal(config.navigationBarTitleText, "预约到店体验");
 });
 
 test("appointment redesign preserves all lead fields and submission behavior", () => {

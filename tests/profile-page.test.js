@@ -25,7 +25,9 @@ test("profile supports phone authorisation, no-match and multiple-child states",
 });
 
 test("profile shows enrolment details and attendance timeline", () => {
-  assert.match(markup, /累计上课/);
+  assert.match(markup, /累计到店/);
+  assert.match(markup, /到店记录/);
+  assert.doesNotMatch(markup, /上课记录|累计上课/);
   assert.match(markup, /activeStudent\.enrollments/);
   assert.match(markup, /activeStudent\.attendance_records/);
   assert.match(markup, /attendance_date/);
@@ -37,6 +39,6 @@ test("profile shows enrolment details and attendance timeline", () => {
 test("appointment and customer service remain secondary actions", () => {
   assert.match(script, /goAppointment/);
   assert.match(script, /callService/);
-  assert.match(markup, /预约体验/);
+  assert.match(markup, /预约到店体验/);
   assert.match(markup, /联系客服/);
 });

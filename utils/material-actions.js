@@ -82,7 +82,7 @@ export const MATERIAL_ACTIONS = {
     }
     wx.shareFileMessage({
       filePath,
-      fileName: material.file_name || material.title || "学习资料",
+      fileName: material.file_name || material.title || "空间公告",
       fail: (error) => {
         const message = error && error.errMsg ? error.errMsg : "";
         if (!message.toLowerCase().includes("cancel")) {

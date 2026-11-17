@@ -11,7 +11,7 @@ const tabBarRoot = resolve(miniProgramRoot, "custom-tab-bar");
 
 test("bottom navigation uses a custom four-item tab bar", () => {
   assert.equal(appConfig.tabBar.custom, true);
-  assert.deepEqual(appConfig.tabBar.list.map((item) => item.text), ["首页", "课程", "AI学习机", "我的"]);
+  assert.deepEqual(appConfig.tabBar.list.map((item) => item.text), ["首页", "兴趣活动", "AI学习机", "我的"]);
   assert.ok(existsSync(resolve(tabBarRoot, "index.js")));
   assert.ok(existsSync(resolve(tabBarRoot, "index.wxml")));
   assert.ok(existsSync(resolve(tabBarRoot, "index.wxss")));

@@ -20,10 +20,10 @@
       <text class="eyebrow">INTEREST / GROWTH</text>
       <text class="hero-mark">LINGZHI</text>
     </view>
-    <text class="page-title">兴趣与素质课程</text>
-    <text class="page-summary">从会做题，到会表达、会创造，让孩子在真正喜欢的事情里发现自己。</text>
+    <text class="page-title">兴趣活动</text>
+    <text class="page-summary">从真实体验出发，让孩子在表达、创造与文化活动中发现兴趣。</text>
     <view class="hero-footer">
-      <text class="hero-caption">COURSE DIRECTORY</text>
+      <text class="hero-caption">ACTIVITY DIRECTORY</text>
       <view class="hero-stat">
         <text class="hero-count">{{courses.length}}</text>
         <text class="hero-unit">个探索方向</text>
@@ -69,7 +69,7 @@
   </view>
 
   <view wx:if="{{!courses.length}}" class="card empty-state">
-    <text class="empty-title">课程方向正在整理中</text>
-    <text class="muted">可以先预约体验，我们会根据孩子的兴趣推荐适合的方向。</text>
+    <text class="empty-title">活动方向正在整理中</text>
+    <text class="muted">可以先预约到店体验，我们会结合孩子的兴趣介绍适合的活动方向。</text>
   </view>
 </view>

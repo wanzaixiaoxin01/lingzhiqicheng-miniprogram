@@ -12,8 +12,8 @@ const homeWxss = readFileSync(resolve(miniProgramRoot, "pages/home/index.wxss"),
 test("home presents the three core services in order", () => {
   const servicesMarkup = homeWxml.slice(homeWxml.indexOf("核心服务"));
   const spaceIndex = servicesMarkup.indexOf("空间服务");
-  const aiIndex = servicesMarkup.indexOf("AI 陪伴");
-  const fieldIndex = servicesMarkup.indexOf("兴趣研学");
+  const aiIndex = servicesMarkup.indexOf("AI 学习机");
+  const fieldIndex = servicesMarkup.indexOf("兴趣活动");
 
   assert.ok(spaceIndex >= 0);
   assert.ok(aiIndex > spaceIndex);
@@ -34,14 +34,14 @@ test("service and shortcut cards retain their English kickers", () => {
     assert.match(homeWxml, new RegExp(kicker));
   }
   assert.match(homeWxml, /class="shortcut-mark">\{\{item\.mark\}\}</);
-  for (const mark of ["COURSE", "MATERIAL", "ACTIVITY", "SPACE", "AI"]) {
+  for (const mark of ["ACTIVITY", "NOTICE", "SPACE", "AI"]) {
     assert.match(homeJs, new RegExp(`mark: "${mark}"`));
   }
   assert.match(homeWxml, /class="appointment-kicker">START HERE</);
 });
 
 test("appointment card uses parent-facing value language", () => {
-  assert.match(homeWxml, /到店体验学习空间与 AI 学习方案，为孩子找到更适合的成长路径。/);
+  assert.match(homeWxml, /到店了解学习空间与智能设备，获取适合的体验建议。/);
   assert.doesNotMatch(homeWxml, /看看是否适合孩子/);
 });
 
@@ -69,8 +69,8 @@ test("appointment card clears the tab bar and enlarges its action", () => {
   assert.ok(ctaFontSize >= 32);
 });
 
-test("hero explains how interest programs benefit children", () => {
-  assert.match(homeWxml, /通过高校参访、兴趣拓展和多元研习活动，帮助孩子发展爱好、开阔眼界。/);
+test("hero explains how interest activities benefit children", () => {
+  assert.match(homeWxml, /通过高校参访、兴趣拓展和文化活动，帮助孩子发展爱好、开阔眼界。/);
   assert.doesNotMatch(homeWxml, /通过兴趣研学连接更多真实场景/);
 });
 
@@ -97,7 +97,7 @@ test("home hero includes a standalone brand logo without changing content flow",
 });
 
 test("home keeps five distinct shortcuts", () => {
-  for (const label of ["智习室", "学习机", "课程服务", "学习资料", "活动风采"]) {
+  for (const label of ["智习室", "学习机", "兴趣活动", "空间公告", "活动风采"]) {
     assert.match(homeJs, new RegExp(label));
   }
   assert.doesNotMatch(homeJs, /校区网点|CAMPUS/);
@@ -105,7 +105,7 @@ test("home keeps five distinct shortcuts", () => {
 });
 
 test("home orders informational services before the two primary product entries", () => {
-  const expectedOrder = ["课程服务", "学习资料", "活动风采", "智习室", "学习机"];
+  const expectedOrder = ["兴趣活动", "空间公告", "活动风采", "智习室", "学习机"];
   const positions = expectedOrder.map((label) => homeJs.indexOf(`label: "${label}"`));
 
   assert.ok(positions.every((position) => position >= 0));
@@ -128,9 +128,9 @@ test("home keeps the original appointment card and adds a lightweight hero entry
   const heroEntryRule = homeWxss.match(/\.hero-appointment-entry\s*\{([^}]*)\}/)?.[1] || "";
 
   assert.match(homeWxml, /class="hero-appointment-entry"[^>]*bindtap="goAppointment"/);
-  assert.match(homeWxml, /预约体验/);
+  assert.match(homeWxml, /预约到店体验/);
   assert.match(homeWxml, /class="appointment-section"/);
-  assert.match(homeWxml, /预约一次体验/);
+  assert.match(homeWxml, /预约到店体验/);
   assert.match(homeWxml, /立即预约/);
   assert.equal((homeWxml.match(/bindtap="goAppointment"/g) || []).length, 2);
 

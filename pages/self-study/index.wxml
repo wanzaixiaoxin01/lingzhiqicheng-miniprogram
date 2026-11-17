@@ -27,7 +27,7 @@
       <view class="hero-features">
         <view class="hero-feature"><text class="feature-index">01</text><text>自习托管</text></view>
         <view class="hero-feature"><text class="feature-index">02</text><text>AI 学习规划</text></view>
-        <view class="hero-feature"><text class="feature-index">03</text><text>作业辅导</text></view>
+        <view class="hero-feature"><text class="feature-index">03</text><text>自主规划</text></view>
       </view>
 
       <button class="hero-button" bindtap="goAppointment">预约到店体验 <text>→</text></button>
@@ -37,7 +37,7 @@
   <view class="editorial-intro">
     <view class="editorial-index">01 / ABOUT THE SPACE</view>
     <text class="section-title intro-title">把每天的学习，变成看得见的进步</text>
-    <text class="section-copy">灵智启程 AI 智能自习室，为孩子提供安静、稳定、有陪伴的学习空间。结合学习规划、作业辅导和习惯培养，让每一次专注都有反馈。</text>
+    <text class="section-copy">灵智启程 AI 智能自习室，为孩子提供安静、稳定的自习场地。结合自主规划、设备体验和习惯培养，让每一次专注都有记录。</text>
     <view class="intro-facts">
       <view class="intro-fact"><text class="fact-value">3个</text><text class="fact-label">已开放学习空间</text></view>
       <view class="intro-fact"><text class="fact-value">全程</text><text class="fact-label">学习过程陪伴</text></view>

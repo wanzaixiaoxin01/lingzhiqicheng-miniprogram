@@ -3,11 +3,11 @@
     <view class="hero-orbit hero-orbit-large"></view>
     <view class="hero-orbit hero-orbit-small"></view>
     <text class="hero-eyebrow">RESERVE A VISIT</text>
-    <text class="hero-title">预约一次，更了解孩子适合什么</text>
-    <text class="hero-summary">留下基本信息，我们会结合孩子的年龄与兴趣，为你介绍更适合的体验方向。</text>
+    <text class="hero-title">预约到店，了解空间与设备</text>
+    <text class="hero-summary">留下基本信息，我们会结合孩子的年龄与兴趣，为你介绍空间、设备和活动体验。</text>
     <view class="hero-benefits">
       <text class="benefit-item">1对1沟通</text>
-      <text class="benefit-item">课程建议</text>
+      <text class="benefit-item">体验建议</text>
       <text class="benefit-item">到店体验</text>
     </view>
   </view>
@@ -16,7 +16,7 @@
     <view class="intent-card" wx:if="{{courseTitle || campusName}}">
       <text class="intent-eyebrow">YOUR INTEREST</text>
       <view class="intent-row" wx:if="{{courseTitle}}">
-        <text class="intent-label">意向课程</text>
+        <text class="intent-label">意向活动</text>
         <text class="intent-value">{{courseTitle}}</text>
       </view>
       <view class="intent-row" wx:if="{{campusName}}">
