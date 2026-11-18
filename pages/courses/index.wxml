@@ -68,7 +68,17 @@
     </view>
   </view>
 
-  <view wx:if="{{!courses.length}}" class="card empty-state">
+  <view wx:if="{{loading}}" class="card empty-state">
+    <text class="empty-title">正在加载兴趣活动</text>
+  </view>
+
+  <view wx:elif="{{loadFailed}}" class="card empty-state">
+    <text class="empty-title">活动加载失败</text>
+    <text class="muted">请检查网络后重新加载。</text>
+    <button class="retry-button" bindtap="retryLoad">重新加载</button>
+  </view>
+
+  <view wx:elif="{{!courses.length}}" class="card empty-state">
     <text class="empty-title">活动方向正在整理中</text>
     <text class="muted">可以先预约到店体验，我们会结合孩子的兴趣介绍适合的活动方向。</text>
   </view>

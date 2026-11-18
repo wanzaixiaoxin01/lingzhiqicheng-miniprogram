@@ -1,12 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import {
   COURSE_CATEGORIES,
-  INTEREST_COURSES,
   filterInterestCourses,
   mergeInterestCourses
 } from "../utils/course-catalog.js";
@@ -24,42 +23,42 @@ test("course catalog only exposes interest and growth directions", () => {
     "绘画",
     "音乐与乐器"
   ]);
-  assert.equal(INTEREST_COURSES.length, 6);
-  assert.ok(INTEREST_COURSES.every((course) => COURSE_CATEGORIES.includes(course.category)));
-  assert.ok(INTEREST_COURSES.some((course) => course.title === "练字"));
-  assert.ok(INTEREST_COURSES.every((course) => course.title !== "书法"));
 });
 
-test("every interest course has a local conversion image", () => {
-  const expectedImages = [
-    "/assets/courses/programming-workshop-v1.jpg",
-    "/assets/courses/english-speaking-v1.jpg",
-    "/assets/courses/expression-reading-v1.jpg",
-    "/assets/courses/handwriting-v1.jpg",
-    "/assets/courses/painting-v1.jpg",
-    "/assets/courses/music-instruments-v1.jpg"
-  ];
-
-  assert.deepEqual(INTEREST_COURSES.map((course) => course.image), expectedImages);
-  for (const image of expectedImages) {
-    assert.ok(existsSync(resolve(miniProgramRoot, image.slice(1))), `${image} must exist`);
-  }
-});
-
-test("legacy service courses are filtered while interest courses remain visible", () => {
+test("activity cards use only server data and server covers", () => {
+  assert.deepEqual(mergeInterestCourses([]), []);
   const courses = mergeInterestCourses([
-    { id: "legacy-1", title: "课后晚托服务", category: "晚托" },
-    { id: "legacy-2", title: "AI 智习室体验课", category: "智习室" },
-    { id: "new-1", title: "少儿编程项目课", category: "编程" }
+    { id: "remote", title: "绘画", category: "绘画", cover_url: "https://example.test/painting.jpg" }
+  ]);
+  assert.equal(courses.length, 1);
+  assert.equal(courses[0].image, "https://example.test/painting.jpg");
+});
+
+test("hidden activities are filtered while new server categories remain visible", () => {
+  const courses = mergeInterestCourses([
+    { id: "hidden", title: "已隐藏活动", category: "其他", status: "hidden" },
+    { id: "new-1", title: "少儿编程项目课", category: "编程", status: "published" },
+    { id: "new-2", title: "舞蹈体验", category: "舞蹈", status: "published" }
   ]);
 
-  assert.ok(courses.every((course) => course.category !== "晚托" && course.category !== "智习室"));
+  assert.ok(courses.every((course) => course.id !== "hidden"));
   assert.ok(courses.some((course) => course.title === "少儿编程项目课"));
-  assert.ok(courses.some((course) => course.category === "英语口语"));
+  assert.ok(courses.some((course) => course.category === "舞蹈"));
   assert.deepEqual(
     filterInterestCourses(courses, "音乐与乐器").map((course) => course.category),
-    ["音乐与乐器"]
+    []
   );
+});
+
+test("activity page exposes retry state when the server request fails", () => {
+  const pageScript = readFileSync(resolve(miniProgramRoot, "pages/courses/index.js"), "utf8");
+  const pageMarkup = readFileSync(resolve(miniProgramRoot, "pages/courses/index.wxml"), "utf8");
+
+  assert.match(pageScript, /loadFailed/);
+  assert.match(pageScript, /retryLoad/);
+  assert.doesNotMatch(pageScript, /isLocal/);
+  assert.match(pageMarkup, /加载失败/);
+  assert.match(pageMarkup, /重新加载/);
 });
 
 test("activity page presents one unified interest activity list", () => {
