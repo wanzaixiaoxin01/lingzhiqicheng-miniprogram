@@ -19,7 +19,7 @@ test("appointment page presents a branded parent-facing consultation flow", () =
   assert.match(wxml, />孩子情况</);
   assert.match(wxml, /1对1沟通/);
   assert.match(wxss, /\.appointment-hero\s*\{[^}]*#071a34/s);
-  assert.match(wxss, /\.form-card\s*\{[^}]*margin-top:\s*-32rpx/s);
+  assert.match(wxss, /\.history-card\s*\{[^}]*margin:\s*-32rpx/s);
   assert.match(wxml, /体验建议/);
   assert.match(wxml, /意向活动/);
   assert.doesNotMatch(wxml, /课程建议|意向课程/);
@@ -28,6 +28,7 @@ test("appointment page presents a branded parent-facing consultation flow", () =
 
 test("appointment redesign preserves all lead fields and submission behavior", () => {
   const wxml = readFileSync(resolve(miniProgramRoot, "pages/appointment/index.wxml"), "utf8");
+  const script = readFileSync(resolve(miniProgramRoot, "pages/appointment/index.js"), "utf8");
 
   for (const field of ["name", "phone", "child_grade", "message"]) {
     assert.match(wxml, new RegExp(`data-field="${field}"[^>]*bindinput="updateField"`));
@@ -35,4 +36,10 @@ test("appointment redesign preserves all lead fields and submission behavior", (
   assert.match(wxml, /class="submit-button"[^>]*bindtap="submitAppointment"/);
   assert.match(wxml, /\{\{courseTitle\}\}/);
   assert.match(wxml, /\{\{campusName\}\}/);
+  assert.match(script, /ensureParentSession/);
+  assert.match(script, /getParentAppointments/);
+  assert.match(script, /createLead\(this\.data\.form, sessionToken\)/);
+  assert.match(wxml, />我的预约</);
+  assert.match(wxml, /wx:for="\{\{appointments\}\}"/);
+  assert.match(wxml, /follow_status_label/);
 });

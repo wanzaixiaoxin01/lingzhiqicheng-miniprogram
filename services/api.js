@@ -40,10 +40,17 @@ export function getMaterial(id) {
   return request(`/api/public/materials/${id}`);
 }
 
-export function createLead(data) {
+export function createLead(data, sessionToken) {
   return request("/api/public/leads", {
     method: "POST",
-    data
+    data,
+    header: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : undefined
+  });
+}
+
+export function getParentAppointments(sessionToken) {
+  return request("/api/public/parent/appointments", {
+    header: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : undefined
   });
 }
 

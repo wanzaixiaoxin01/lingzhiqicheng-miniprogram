@@ -12,6 +12,29 @@
     </view>
   </view>
 
+  <view class="history-card">
+    <view class="history-heading">
+      <view>
+        <text class="section-step">MY VISITS</text>
+        <text class="section-title">我的预约</text>
+      </view>
+      <text class="history-count" wx:if="{{appointments.length}}">共 {{appointments.length}} 条</text>
+    </view>
+    <view class="history-state" wx:if="{{historyLoading}}">正在加载历史预约...</view>
+    <view class="history-state history-error" wx:elif="{{historyError}}" bindtap="loadAppointmentHistory">{{historyError}}</view>
+    <view class="history-state" wx:elif="{{!appointments.length}}">暂无预约记录，填写下方信息即可预约到店</view>
+    <view class="appointment-history" wx:else>
+      <view class="history-item" wx:for="{{appointments}}" wx:key="id">
+        <view class="history-item-head">
+          <text class="history-intent">{{item.course_title || item.campus_name || '到店体验'}}</text>
+          <text class="history-status status-{{item.follow_status}}">{{item.follow_status_label}}</text>
+        </view>
+        <text class="history-meta">{{item.child_grade}} · {{item.created_at_label}}</text>
+        <text class="history-message" wx:if="{{item.message}}">{{item.message}}</text>
+      </view>
+    </view>
+  </view>
+
   <view class="form-card">
     <view class="intent-card" wx:if="{{courseTitle || campusName}}">
       <text class="intent-eyebrow">YOUR INTEREST</text>
@@ -36,11 +59,11 @@
 
       <view class="field-group">
         <text class="field-label">家长姓名</text>
-        <input class="field-control" placeholder="请输入家长姓名" placeholder-class="field-placeholder" data-field="name" bindinput="updateField" />
+        <input class="field-control" value="{{form.name}}" placeholder="请输入家长姓名" placeholder-class="field-placeholder" data-field="name" bindinput="updateField" />
       </view>
       <view class="field-group">
         <text class="field-label">手机号码</text>
-        <input class="field-control" placeholder="请输入常用手机号" placeholder-class="field-placeholder" type="number" maxlength="11" data-field="phone" bindinput="updateField" />
+        <input class="field-control" value="{{form.phone}}" placeholder="请输入常用手机号" placeholder-class="field-placeholder" type="number" maxlength="11" data-field="phone" bindinput="updateField" />
       </view>
     </view>
 
@@ -57,16 +80,16 @@
 
       <view class="field-group">
         <text class="field-label">孩子年级</text>
-        <input class="field-control" placeholder="例如：小学四年级" placeholder-class="field-placeholder" data-field="child_grade" bindinput="updateField" />
+        <input class="field-control" value="{{form.child_grade}}" placeholder="例如：小学四年级" placeholder-class="field-placeholder" data-field="child_grade" bindinput="updateField" />
       </view>
       <view class="field-group">
         <text class="field-label">补充说明</text>
-        <textarea class="field-control field-textarea" placeholder="可以填写孩子的兴趣方向或方便联系的时间" placeholder-class="field-placeholder" data-field="message" bindinput="updateField"></textarea>
+        <textarea class="field-control field-textarea" value="{{form.message}}" placeholder="可以填写孩子的兴趣方向或方便联系的时间" placeholder-class="field-placeholder" data-field="message" bindinput="updateField"></textarea>
       </view>
     </view>
 
-    <button class="submit-button" bindtap="submitAppointment">
-      <text>提交预约申请</text>
+    <button class="submit-button" loading="{{submitting}}" disabled="{{submitting}}" bindtap="submitAppointment">
+      <text>{{submitting ? '正在提交' : '提交预约申请'}}</text>
       <text class="submit-arrow">→</text>
     </button>
     <text class="submit-note">提交后，工作人员会尽快与你联系确认</text>
