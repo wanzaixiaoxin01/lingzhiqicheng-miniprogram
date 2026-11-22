@@ -23,6 +23,8 @@ test("profile supports phone authorisation, no-match and multiple-child states",
   assert.match(markup, /wx:for="\{\{dashboard\.students\}\}"/);
   assert.match(markup, /data-student-id="\{\{item\.id\}\}"/);
   assert.match(markup, /授权手机号，查看孩子成长记录/);
+  assert.match(markup, /授权获取微信手机号/);
+  assert.doesNotMatch(markup, /微信手机号登录/);
   assert.doesNotMatch(markup, /PARENT CENTER|查看孩子的报名信息与到店记录/);
 });
 

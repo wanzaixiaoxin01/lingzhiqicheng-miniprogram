@@ -21,7 +21,7 @@
       loading="{{authorizing}}"
       disabled="{{authorizing}}"
       bindgetphonenumber="authorizePhone"
-    >微信手机号登录</button>
+    >授权获取微信手机号</button>
   </view>
 
   <block wx:elif="{{dashboard}}">
