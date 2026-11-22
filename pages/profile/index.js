@@ -92,13 +92,5 @@ Page({
 
   retryLoad() {
     this.loadDashboard();
-  },
-
-  callService() {
-    wx.makePhoneCall({ phoneNumber: "4009006368" });
-  },
-
-  goAppointment() {
-    wx.navigateTo({ url: "/pages/appointment/index" });
   }
 });

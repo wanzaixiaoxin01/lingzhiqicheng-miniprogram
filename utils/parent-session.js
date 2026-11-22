@@ -43,6 +43,21 @@ export async function ensureParentSession() {
   return result.session_token;
 }
 
+export async function withParentSession(operation) {
+  const sessionToken = await ensureParentSession();
+  try {
+    return await operation(sessionToken);
+  } catch (error) {
+    if (!error || error.statusCode !== 401) {
+      throw error;
+    }
+    wx.removeStorageSync(PARENT_SESSION_KEY);
+    wx.removeStorageSync(PARENT_PHONE_AUTHORIZED_KEY);
+    const renewedToken = await ensureParentSession();
+    return operation(renewedToken);
+  }
+}
+
 export async function authorizeParentWithPhone(phoneCode) {
   if (!phoneCode) {
     throw new Error("未获得手机号授权");

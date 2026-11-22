@@ -122,11 +122,52 @@
 .history-card {
   position: relative;
   z-index: 2;
-  margin: -32rpx 28rpx 24rpx;
+  margin: 24rpx 28rpx;
   padding: 34rpx;
   border-radius: 28rpx;
   background: #ffffff;
   box-shadow: 0 18rpx 48rpx rgba(7, 26, 52, 0.09);
+}
+
+.appointment-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  gap: 8rpx;
+  margin: -32rpx 28rpx 24rpx;
+  padding: 10rpx;
+  border-radius: 24rpx;
+  background: #ffffff;
+  box-shadow: 0 8rpx 30rpx rgba(7, 26, 52, .08);
+}
+
+.appointment-tab {
+  flex: 1;
+  margin: 0;
+  padding: 22rpx 0;
+  border-radius: 18rpx;
+  background: transparent;
+  color: #7a879a;
+  font-size: 28rpx;
+  line-height: 1.4;
+}
+
+.appointment-tab::after {
+  border: 0;
+}
+
+.appointment-tab-active {
+  background: #0b2a54;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.history-hint {
+  display: block;
+  margin-bottom: 16rpx;
+  color: #7a879a;
+  font-size: 22rpx;
 }
 
 .history-heading,
@@ -164,8 +205,59 @@
 }
 
 .history-item {
+  position: relative;
+  z-index: 1;
   padding: 24rpx 0;
   border-top: 1rpx solid #e7edf4;
+  background: #ffffff;
+}
+
+.history-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18rpx;
+  margin-top: 20rpx;
+}
+
+.history-call {
+  margin: 0;
+  padding: 14rpx 24rpx;
+  border: 1rpx solid #1769d2;
+  border-radius: 12rpx;
+  background: #1769d2;
+  color: #ffffff;
+  font-size: 24rpx;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.history-call::after,
+.history-cancel::after {
+  border: 0;
+}
+
+.history-call[disabled] {
+  color: #8a96a5;
+  background: #f4f5f7;
+}
+
+.history-cancel {
+  margin: 0;
+  padding: 14rpx 20rpx;
+  border: 1rpx solid #e2e5e9;
+  border-radius: 12rpx;
+  background: #f4f5f7;
+  color: #626c78;
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+
+.appointment-time-hint {
+  display: block;
+  margin-top: 16rpx;
+  color: #7a879a;
+  font-size: 22rpx;
+  line-height: 1.5;
 }
 
 .history-intent {
@@ -189,7 +281,13 @@
   background: #e8f6ec;
 }
 
+.status-not_considering,
 .status-invalid {
+  color: #768196;
+  background: #eef1f5;
+}
+
+.status-cancelled {
   color: #768196;
   background: #eef1f5;
 }
@@ -274,6 +372,21 @@
   margin-top: 22rpx;
 }
 
+.appointment-time-row {
+  display: flex;
+  gap: 18rpx;
+  margin-top: 22rpx;
+}
+
+.appointment-time-field {
+  flex: 1;
+  min-width: 0;
+}
+
+.appointment-time-row .field-group + .field-group {
+  margin-top: 0;
+}
+
 .field-label {
   margin-bottom: 10rpx;
   color: #344b69;
@@ -295,6 +408,40 @@
 
 .field-placeholder {
   color: #a7b1bd;
+}
+
+.required-note {
+  display: block;
+  margin-bottom: 28rpx;
+  color: #7a879a;
+  font-size: 22rpx;
+}
+
+.required-mark {
+  color: #bc3939;
+}
+
+.field-invalid .field-control {
+  border-color: #c94f45;
+  background: #fff7f6;
+}
+
+.field-error {
+  display: block;
+  margin-top: 10rpx;
+  color: #b45d49;
+  font-size: 20rpx;
+}
+
+.field-picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.picker-arrow {
+  color: #7a879a;
+  font-size: 30rpx;
 }
 
 .field-textarea {

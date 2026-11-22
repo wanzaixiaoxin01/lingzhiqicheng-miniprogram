@@ -2,6 +2,7 @@ import { getLearningMachinePosters } from "../../services/api";
 
 Page({
   data: {
+    contactPhone: "4009006368",
     marketingImages: [],
     loadingPosters: true
   },
@@ -29,9 +30,7 @@ Page({
     }
   },
 
-  goAppointment() {
-    wx.navigateTo({
-      url: "/pages/appointment/index?source=ai-learning-machine"
-    });
+  callService() {
+    wx.makePhoneCall({ phoneNumber: this.data.contactPhone });
   }
 });

@@ -47,19 +47,6 @@
   object-position: 51% center;
 }
 
-.hero-split {
-  position: absolute;
-  z-index: 3;
-  top: -4%;
-  left: 57.5%;
-  width: 2rpx;
-  height: 74%;
-  background: rgba(255, 255, 255, .72);
-  box-shadow: 0 0 14rpx rgba(255, 255, 255, .32);
-  transform: rotate(8deg);
-  transform-origin: top center;
-}
-
 .hero-shade {
   position: absolute;
   z-index: 2;

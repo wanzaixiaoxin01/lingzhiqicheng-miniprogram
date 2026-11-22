@@ -22,6 +22,8 @@ test("profile supports phone authorisation, no-match and multiple-child states",
   assert.match(markup, /暂未查询到报名信息/);
   assert.match(markup, /wx:for="\{\{dashboard\.students\}\}"/);
   assert.match(markup, /data-student-id="\{\{item\.id\}\}"/);
+  assert.match(markup, /授权手机号，查看孩子成长记录/);
+  assert.doesNotMatch(markup, /PARENT CENTER|查看孩子的报名信息与到店记录/);
 });
 
 test("profile shows enrolment details and attendance timeline", () => {
@@ -36,9 +38,8 @@ test("profile shows enrolment details and attendance timeline", () => {
   assert.match(styles, /\.student-switcher/);
 });
 
-test("appointment and customer service remain secondary actions", () => {
-  assert.match(script, /goAppointment/);
-  assert.match(script, /callService/);
-  assert.match(markup, /预约到店体验/);
-  assert.match(markup, /联系客服/);
+test("profile focuses on child records without appointment or service actions", () => {
+  assert.doesNotMatch(script, /goMyAppointments|goAppointment|callService/);
+  assert.doesNotMatch(markup, /我的预约|预约到店体验|联系客服|support-actions/);
+  assert.doesNotMatch(styles, /support-actions|support-button|support-primary/);
 });

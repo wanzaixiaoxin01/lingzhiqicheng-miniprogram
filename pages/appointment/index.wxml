@@ -12,7 +12,12 @@
     </view>
   </view>
 
-  <view class="history-card">
+  <view class="appointment-tabs">
+    <button class="appointment-tab {{activeTab === 'form' ? 'appointment-tab-active' : ''}}" data-tab="form" bindtap="switchAppointmentTab">预约到店</button>
+    <button class="appointment-tab {{activeTab === 'history' ? 'appointment-tab-active' : ''}}" data-tab="history" bindtap="switchAppointmentTab">我的预约</button>
+  </view>
+
+  <view class="history-card" hidden="{{activeTab !== 'history'}}">
     <view class="history-heading">
       <view>
         <text class="section-step">MY VISITS</text>
@@ -22,20 +27,30 @@
     </view>
     <view class="history-state" wx:if="{{historyLoading}}">正在加载历史预约...</view>
     <view class="history-state history-error" wx:elif="{{historyError}}" bindtap="loadAppointmentHistory">{{historyError}}</view>
-    <view class="history-state" wx:elif="{{!appointments.length}}">暂无预约记录，填写下方信息即可预约到店</view>
+    <view class="history-state" wx:elif="{{!appointments.length}}">暂无预约记录，点击“预约到店”即可填写预约</view>
     <view class="appointment-history" wx:else>
-      <view class="history-item" wx:for="{{appointments}}" wx:key="id">
-        <view class="history-item-head">
-          <text class="history-intent">{{item.course_title || item.campus_name || '到店体验'}}</text>
-          <text class="history-status status-{{item.follow_status}}">{{item.follow_status_label}}</text>
+      <view wx:for="{{appointments}}" wx:key="id">
+        <view class="history-item">
+          <view class="history-item-head">
+            <text class="history-intent">{{item.course_title || item.campus_name || '到店体验'}}</text>
+            <text class="history-status status-{{item.follow_status}}">{{item.follow_status_label}}</text>
+          </view>
+          <text class="history-meta">{{item.campus_name || '未知网点'}} · {{item.appointment_at_label}}</text>
+          <text class="history-meta">{{item.child_name || '未填写姓名'}} · {{item.child_age ? item.child_age + '岁' : '年龄未填写'}} · {{item.child_grade || '年级未填写'}}</text>
+          <text class="history-meta">提交于 {{item.created_at_label}}</text>
+          <text class="history-message" wx:if="{{item.message}}">{{item.message}}</text>
+          <text class="history-meta" wx:if="{{item.child_school}}">当前就读学校：{{item.child_school}}</text>
+          <view class="history-actions">
+            <button class="history-cancel" wx:if="{{item.can_cancel}}" data-id="{{item.id}}" bindtap="cancelAppointment">取消预约</button>
+            <button class="history-call" data-id="{{item.id}}" catchtap="callAppointmentCampus" disabled="{{!item.campus_phone}}">{{item.campus_phone ? '联系门店' : '暂无门店电话'}}</button>
+          </view>
         </view>
-        <text class="history-meta">{{item.child_grade}} · {{item.created_at_label}}</text>
-        <text class="history-message" wx:if="{{item.message}}">{{item.message}}</text>
       </view>
     </view>
   </view>
 
-  <view class="form-card">
+  <view class="form-card" hidden="{{activeTab !== 'form'}}">
+    <text class="required-note"><text class="required-mark">*</text> 为必填项，其余项目可选填</text>
     <view class="intent-card" wx:if="{{courseTitle || campusName}}">
       <text class="intent-eyebrow">YOUR INTEREST</text>
       <view class="intent-row" wx:if="{{courseTitle}}">
@@ -57,13 +72,15 @@
         <text class="section-note">方便我们与你确认体验安排</text>
       </view>
 
-      <view class="field-group">
-        <text class="field-label">家长姓名</text>
-        <input class="field-control" value="{{form.name}}" placeholder="请输入家长姓名" placeholder-class="field-placeholder" data-field="name" bindinput="updateField" />
+      <view id="field-name" class="field-group {{fieldErrors.name ? 'field-invalid' : ''}}">
+        <text class="field-label">家长姓名 <text class="required-mark">*</text></text>
+        <input class="field-control" value="{{form.name}}" maxlength="80" placeholder="请输入家长姓名" placeholder-class="field-placeholder" data-field="name" bindinput="updateField" />
+        <text class="field-error" wx:if="{{fieldErrors.name}}">{{fieldErrors.name}}</text>
       </view>
-      <view class="field-group">
-        <text class="field-label">手机号码</text>
+      <view id="field-phone" class="field-group {{fieldErrors.phone ? 'field-invalid' : ''}}">
+        <text class="field-label">手机号码 <text class="required-mark">*</text></text>
         <input class="field-control" value="{{form.phone}}" placeholder="请输入常用手机号" placeholder-class="field-placeholder" type="number" maxlength="11" data-field="phone" bindinput="updateField" />
+        <text class="field-error" wx:if="{{fieldErrors.phone}}">{{fieldErrors.phone}}</text>
       </view>
     </view>
 
@@ -73,17 +90,79 @@
       <view class="section-heading">
         <view>
           <text class="section-step">STEP 02</text>
+          <text class="section-title">到店安排</text>
+        </view>
+        <text class="section-note">选择想到店的网点和日期</text>
+      </view>
+
+      <view id="field-campus_id" class="field-group {{fieldErrors.campus_id ? 'field-invalid' : ''}}">
+        <text class="field-label">预约网点 <text class="required-mark">*</text></text>
+        <picker mode="selector" range="{{campusOptions}}" range-key="name" value="{{campusIndex}}" bindchange="selectCampus">
+          <view class="field-control field-picker">
+            <text class="{{form.campus_id ? '' : 'field-placeholder'}}">{{campusName || (campusLoading ? '正在加载网点...' : '请选择预约网点')}}</text>
+            <text class="picker-arrow">⌄</text>
+          </view>
+        </picker>
+        <text class="field-error" wx:if="{{campusError}}" bindtap="loadCampuses">{{campusError}}</text>
+        <text class="field-error" wx:if="{{fieldErrors.campus_id}}">{{fieldErrors.campus_id}}</text>
+      </view>
+      <view class="appointment-time-row">
+        <view id="field-appointmentDate" class="field-group appointment-time-field {{fieldErrors.appointmentDate ? 'field-invalid' : ''}}">
+          <text class="field-label">预约日期 <text class="required-mark">*</text></text>
+          <picker mode="date" value="{{appointmentDate}}" start="{{minAppointmentDate}}" bindtap="refreshAppointmentBounds" bindchange="selectAppointmentDate">
+            <view class="field-control field-picker">
+              <text class="{{appointmentDate ? '' : 'field-placeholder'}}">{{appointmentDate || '请选择日期'}}</text>
+              <text class="picker-arrow">⌄</text>
+            </view>
+          </picker>
+          <text class="field-error" wx:if="{{fieldErrors.appointmentDate}}">{{fieldErrors.appointmentDate}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section-divider"></view>
+
+    <view class="form-section">
+      <view class="section-heading">
+        <view>
+          <text class="section-step">STEP 03</text>
           <text class="section-title">孩子情况</text>
         </view>
         <text class="section-note">帮助我们提前了解体验需求</text>
       </view>
 
-      <view class="field-group">
-        <text class="field-label">孩子年级</text>
-        <input class="field-control" value="{{form.child_grade}}" placeholder="例如：小学四年级" placeholder-class="field-placeholder" data-field="child_grade" bindinput="updateField" />
+      <view id="field-child_name" class="field-group {{fieldErrors.child_name ? 'field-invalid' : ''}}">
+        <text class="field-label">孩子姓名（选填）</text>
+        <input class="field-control" value="{{form.child_name}}" maxlength="80" placeholder="请输入孩子姓名" placeholder-class="field-placeholder" data-field="child_name" bindinput="updateField" />
+        <text class="field-error" wx:if="{{fieldErrors.child_name}}">{{fieldErrors.child_name}}</text>
+      </view>
+      <view id="field-child_age" class="field-group {{fieldErrors.child_age ? 'field-invalid' : ''}}">
+        <text class="field-label">孩子年龄（选填）</text>
+        <picker mode="selector" range="{{ageOptions}}" value="{{ageIndex}}" bindchange="selectAge">
+          <view class="field-control field-picker">
+            <text class="{{form.child_age ? '' : 'field-placeholder'}}">{{form.child_age ? form.child_age + '岁' : '请选择孩子年龄'}}</text>
+            <text class="picker-arrow">⌄</text>
+          </view>
+        </picker>
+        <text class="field-error" wx:if="{{fieldErrors.child_age}}">{{fieldErrors.child_age}}</text>
+      </view>
+      <view id="field-child_grade" class="field-group {{fieldErrors.child_grade ? 'field-invalid' : ''}}">
+        <text class="field-label">孩子年级（选填）</text>
+        <picker mode="selector" range="{{gradeOptions}}" value="{{gradeIndex}}" bindchange="selectGrade">
+          <view class="field-control field-picker">
+            <text class="{{form.child_grade ? '' : 'field-placeholder'}}">{{form.child_grade || '请选择孩子年级'}}</text>
+            <text class="picker-arrow">⌄</text>
+          </view>
+        </picker>
+        <text class="field-error" wx:if="{{fieldErrors.child_grade}}">{{fieldErrors.child_grade}}</text>
+      </view>
+      <view id="field-child_school" class="field-group {{fieldErrors.child_school ? 'field-invalid' : ''}}">
+        <text class="field-label">当前就读学校（选填）</text>
+        <input class="field-control" value="{{form.child_school}}" maxlength="120" placeholder="请输入当前就读学校" placeholder-class="field-placeholder" data-field="child_school" bindinput="updateField" />
+        <text class="field-error" wx:if="{{fieldErrors.child_school}}">{{fieldErrors.child_school}}</text>
       </view>
       <view class="field-group">
-        <text class="field-label">补充说明</text>
+        <text class="field-label">补充说明（选填）</text>
         <textarea class="field-control field-textarea" value="{{form.message}}" placeholder="可以填写孩子的兴趣方向或方便联系的时间" placeholder-class="field-placeholder" data-field="message" bindinput="updateField"></textarea>
       </view>
     </view>

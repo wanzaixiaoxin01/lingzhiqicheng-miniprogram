@@ -16,7 +16,10 @@ export function request(path, options = {}) {
           return;
         }
 
-        reject(response.data);
+        reject({
+          ...(response.data && typeof response.data === "object" ? response.data : {}),
+          statusCode: response.statusCode
+        });
       },
       fail: reject
     });

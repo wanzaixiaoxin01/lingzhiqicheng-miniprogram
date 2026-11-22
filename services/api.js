@@ -54,6 +54,13 @@ export function getParentAppointments(sessionToken) {
   });
 }
 
+export function cancelParentAppointment(id, sessionToken) {
+  return request(`/api/public/parent/appointments/${id}/cancel`, {
+    method: "POST",
+    header: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : undefined
+  });
+}
+
 export function createParentSession(data) {
   return request("/api/public/parent/session", {
     method: "POST",

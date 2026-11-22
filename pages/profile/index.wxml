@@ -1,10 +1,4 @@
 <view class="page profile-page">
-  <view class="profile-header">
-    <text class="eyebrow">PARENT CENTER</text>
-    <text class="page-title">我的</text>
-    <text class="page-summary">查看孩子的报名信息与到店记录</text>
-  </view>
-
   <view wx:if="{{loading}}" class="state-card">
     <view class="loading-dot"></view>
     <text class="state-title">正在读取家长信息</text>
@@ -19,7 +13,7 @@
   <view wx:elif="{{dashboard.needs_phone_authorization}}" class="auth-card">
     <text class="auth-index">01</text>
     <text class="auth-kicker">WECHAT VERIFICATION</text>
-    <text class="auth-title">授权手机号，查看孩子记录</text>
+    <text class="auth-title">授权手机号，查看孩子成长记录</text>
     <text class="auth-copy">手机号仅用于匹配老师在报名时登记的家长信息，不会向其他用户公开。</text>
     <button
       class="phone-auth-button"
@@ -126,12 +120,8 @@
     <view wx:else class="state-card no-match-card">
       <text class="state-kicker">NO RECORD FOUND</text>
       <text class="state-title">暂未查询到报名信息</text>
-      <text class="state-copy">请确认报名预留手机号与当前微信手机号一致，或联系客服处理。</text>
+      <text class="state-copy">请确认报名预留手机号与当前微信手机号一致，或联系门店工作人员核对。</text>
     </view>
   </block>
 
-  <view class="support-actions">
-    <button class="support-button support-primary" bindtap="goAppointment">预约到店体验</button>
-    <button class="support-button" bindtap="callService">联系客服</button>
-  </view>
 </view>

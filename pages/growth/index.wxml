@@ -23,17 +23,13 @@
   </view>
 
   <view class="conversion-card">
+    <view class="conversion-orbit conversion-orbit-large"></view>
+    <view class="conversion-orbit conversion-orbit-small"></view>
+    <view class="conversion-content">
     <text class="conversion-eyebrow">LINGZHI PAD</text>
     <text class="conversion-title">给孩子一套更懂学习的工具</text>
     <text class="conversion-copy">了解学习机配置、适用年级与购买方案</text>
-    <button class="conversion-button" bindtap="goAppointment">立即咨询购买</button>
-  </view>
-
-  <view class="purchase-bar">
-    <view class="purchase-copy">
-      <text class="purchase-title">AI 学习机</text>
-      <text class="purchase-subtitle">咨询配置与购买方案</text>
     </view>
-    <button class="purchase-button" bindtap="goAppointment">咨询购买</button>
+    <button class="conversion-button" bindtap="callService">电话咨询</button>
   </view>
 </view>

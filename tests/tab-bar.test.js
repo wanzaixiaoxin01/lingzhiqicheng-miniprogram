@@ -28,10 +28,10 @@ test("the third tab is an AI learning machine conversion page", () => {
   assert.match(tabBarScript, /pagePath:\s*"\/pages\/growth\/index",\s*text:\s*"AI学习机"/);
   assert.equal(productConfig.navigationBarTitleText, "AI学习机");
   assert.match(productPage, /wx:for="\{\{marketingImages\}\}"/);
-  assert.match(productPage, /bindtap="goAppointment"/);
-  assert.match(productPage, /咨询购买/);
-  assert.match(productScript, /goAppointment\(\)/);
-  assert.match(productScript, /\/pages\/appointment\/index\?source=ai-learning-machine/);
+  assert.match(productPage, /bindtap="callService"/);
+  assert.match(productPage, /电话咨询/);
+  assert.match(productScript, /wx.makePhoneCall/);
+  assert.match(productScript, /contactPhone:\s*"4009006368"/);
 
   assert.match(productScript, /getLearningMachinePosters/);
   assert.doesNotMatch(productScript, /\/assets\/learn-machine\//);

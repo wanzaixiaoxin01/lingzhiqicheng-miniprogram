@@ -116,7 +116,7 @@ test("course cards lead with their conversion image", () => {
   assert.match(wxss, /\.course-image\s*\{[^}]*width:\s*100%[^}]*height:\s*100%/s);
 });
 
-test("course hero pairs programming and interest scenes with a diagonal split", () => {
+test("course hero pairs programming and interest scenes without a white divider", () => {
   const wxml = readFileSync(resolve(miniProgramRoot, "pages/courses/index.wxml"), "utf8");
   const wxss = readFileSync(resolve(miniProgramRoot, "pages/courses/index.wxss"), "utf8");
 
@@ -124,11 +124,11 @@ test("course hero pairs programming and interest scenes with a diagonal split", 
   assert.match(wxml, /src="\/assets\/courses\/programming-workshop-v1\.jpg"/);
   assert.match(wxml, /class="hero-panel hero-panel-right"/);
   assert.match(wxml, /src="\/assets\/home\/interest-workshop-v2\.jpg"/);
-  assert.match(wxml, /class="hero-split"/);
+  assert.doesNotMatch(wxml, /class="hero-split"/);
   assert.match(wxml, /class="hero-shade"/);
   assert.match(wxss, /\.hero-panel-left\s*\{[^}]*clip-path:\s*polygon/s);
   assert.match(wxss, /\.hero-panel-right\s*\{[^}]*clip-path:\s*polygon/s);
-  assert.match(wxss, /\.hero-split\s*\{[^}]*transform:\s*rotate/s);
+  assert.doesNotMatch(wxss, /\.hero-split/);
   assert.match(wxss, /\.hero-image\s*\{[^}]*position:\s*absolute[^}]*width:\s*100%[^}]*height:\s*100%/s);
   assert.match(wxss, /\.hero-shade\s*\{[^}]*linear-gradient/s);
 });
