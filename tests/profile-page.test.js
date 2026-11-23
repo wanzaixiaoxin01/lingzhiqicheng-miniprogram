@@ -12,6 +12,7 @@ const styles = readFileSync(resolve(root, "pages/profile/index.wxss"), "utf8");
 test("profile loads the authenticated parent dashboard", () => {
   assert.match(script, /getParentDashboard/);
   assert.match(script, /ensureParentSession/);
+  assert.match(script, /withParentSession/);
   assert.match(script, /selectStudent/);
   assert.match(script, /activeStudent/);
 });

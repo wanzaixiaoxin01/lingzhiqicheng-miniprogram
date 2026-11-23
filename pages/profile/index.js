@@ -2,7 +2,8 @@ import { getParentDashboard } from "../../services/api";
 import {
   authorizeParentWithPhone,
   ensureParentSession,
-  markParentPhoneAuthorized
+  markParentPhoneAuthorized,
+  withParentSession
 } from "../../utils/parent-session";
 
 Page({
@@ -26,8 +27,7 @@ Page({
   async loadDashboard() {
     this.setData({ loading: true, errorMessage: "" });
     try {
-      const sessionToken = await ensureParentSession();
-      const dashboard = await getParentDashboard(sessionToken);
+      const dashboard = await withParentSession((sessionToken) => getParentDashboard(sessionToken));
       if (!dashboard.needs_phone_authorization) {
         markParentPhoneAuthorized();
       }
