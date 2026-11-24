@@ -18,7 +18,7 @@
 
   <view wx:else class="poster-state poster-empty">
     <text class="poster-state-kicker">LINGZHI PAD</text>
-    <text class="poster-state-title">暂无学习机海报</text>
+    <text class="poster-state-title">敬请期待</text>
     <text class="poster-state-copy">可先咨询设备配置与到店体验</text>
   </view>
 

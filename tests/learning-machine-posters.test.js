@@ -21,5 +21,6 @@ test("learning machine posters are loaded from server configuration", () => {
 test("learning machine page has loading, configured and empty states", () => {
   assert.match(pageMarkup, /wx:if="\{\{loadingPosters\}\}"/);
   assert.match(pageMarkup, /wx:elif="\{\{marketingImages\.length\}\}"/);
-  assert.match(pageMarkup, /暂无学习机海报/);
+  assert.match(pageMarkup, /敬请期待/);
+  assert.doesNotMatch(pageMarkup, /暂无学习机海报/);
 });
