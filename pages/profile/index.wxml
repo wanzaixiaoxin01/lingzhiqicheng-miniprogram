@@ -60,8 +60,7 @@
         >
           <text wx:if="{{activeStudent.enrollments.length > 1}}">{{item.campus_name}} · {{item.course_title || item.service_type}}</text>
           <view class="validity-row"><text>开始日期</text><text>{{item.started_on || '待完善'}}</text></view>
-          <view class="validity-row"><text>有效期</text><text>{{item.validity_label || '待完善'}}</text></view>
-          <view wx:if="{{item.ended_on}}" class="validity-row"><text>结束日期</text><text>{{item.ended_on}}</text></view>
+          <view wx:if="{{item.ended_on}}" class="validity-row validity-row-secondary"><text>有效期至</text><text>{{item.ended_on}}</text></view>
         </view>
         <view wx:if="{{!activeStudent.enrollments.length}}" class="student-validity">有效期：待完善</view>
       </view>

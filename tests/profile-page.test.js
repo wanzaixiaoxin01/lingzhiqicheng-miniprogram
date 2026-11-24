@@ -41,6 +41,13 @@ test("profile shows enrolment details and attendance timeline", () => {
   assert.match(styles, /\.student-switcher/);
 });
 
+test("profile de-emphasizes the expiry date without showing a duration", () => {
+  assert.match(markup, /class="validity-row validity-row-secondary"><text>有效期至<\/text>/);
+  assert.doesNotMatch(markup, /<text>有效期<\/text>/);
+  assert.doesNotMatch(markup, /item\.validity_label/);
+  assert.match(styles, /\.validity-row-secondary/);
+});
+
 test("profile focuses on child records without appointment or service actions", () => {
   assert.doesNotMatch(script, /goMyAppointments|goAppointment|callService/);
   assert.doesNotMatch(markup, /我的预约|预约到店体验|联系客服|support-actions/);
