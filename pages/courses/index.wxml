@@ -78,7 +78,6 @@
   </view>
 
   <view wx:elif="{{!courses.length}}" class="card empty-state">
-    <text class="empty-title">活动方向正在整理中</text>
-    <text class="muted">可以先预约到店体验，我们会结合孩子的兴趣介绍适合的活动方向。</text>
+    <text class="empty-title">敬请期待</text>
   </view>
 </view>
