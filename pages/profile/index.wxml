@@ -25,14 +25,6 @@
   </view>
 
   <block wx:elif="{{dashboard}}">
-    <view class="identity-row">
-      <view>
-        <text class="identity-label">已验证家长手机号</text>
-        <text class="identity-phone">{{dashboard.phone_masked}}</text>
-      </view>
-      <text class="identity-status">已认证</text>
-    </view>
-
     <view wx:if="{{dashboard.students.length}}" class="dashboard-content">
       <scroll-view wx:if="{{dashboard.students.length > 1}}" class="student-switcher" scroll-x enhanced show-scrollbar="{{false}}">
         <view class="student-switcher-inner">
@@ -61,28 +53,17 @@
             <text class="attendance-unit">累计到店</text>
           </view>
         </view>
-      </view>
-
-      <view class="section-block">
-        <view class="section-heading">
-          <text class="section-kicker">ENROLLMENT</text>
-          <text class="section-title">报名信息</text>
-        </view>
         <view
           wx:for="{{activeStudent.enrollments}}"
           wx:key="id"
-          class="enrollment-card"
+          class="student-validity"
         >
-          <view class="enrollment-row">
-            <text class="field-label">服务点</text>
-            <text class="field-value">{{item.campus_name}}</text>
-          </view>
-          <view class="enrollment-row">
-            <text class="field-label">学习方向</text>
-            <text class="field-value">{{item.course_title || item.service_type}}</text>
-          </view>
+          <text wx:if="{{activeStudent.enrollments.length > 1}}">{{item.campus_name}} · {{item.course_title || item.service_type}}</text>
+          <view class="validity-row"><text>开始日期</text><text>{{item.started_on || '待完善'}}</text></view>
+          <view class="validity-row"><text>有效期</text><text>{{item.validity_label || '待完善'}}</text></view>
+          <view wx:if="{{item.ended_on}}" class="validity-row"><text>结束日期</text><text>{{item.ended_on}}</text></view>
         </view>
-        <view wx:if="{{!activeStudent.enrollments.length}}" class="inline-empty">暂无有效报名信息</view>
+        <view wx:if="{{!activeStudent.enrollments.length}}" class="student-validity">有效期：待完善</view>
       </view>
 
       <view class="section-block">
