@@ -26,6 +26,8 @@ test("profile supports phone authorisation, no-match and multiple-child states",
   assert.match(markup, /student-tab/);
   assert.match(markup, /student-tab-active/);
   assert.match(markup, /aria-selected/);
+  assert.match(markup, /student-tab-grade/);
+  assert.match(markup, /student-tab-check/);
   assert.match(markup, /授权手机号，查看孩子成长记录/);
   assert.match(markup, /授权获取微信手机号/);
   assert.doesNotMatch(markup, /微信手机号登录/);

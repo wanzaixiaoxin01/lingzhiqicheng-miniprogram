@@ -172,30 +172,37 @@
 
 .student-switcher {
   width: 100%;
-  margin: 4rpx 0 18rpx;
-  border-bottom: 1rpx solid #dbe5ef;
+  margin: 4rpx 0 20rpx;
+  padding: 8rpx;
+  border: 1rpx solid #dce7f0;
+  border-radius: 24rpx;
+  background: rgba(255, 255, 255, .78);
+  box-shadow: 0 10rpx 26rpx rgba(15, 45, 79, .06);
   white-space: nowrap;
 }
 
 .student-switcher-inner {
   display: inline-flex;
   min-width: 100%;
+  gap: 8rpx;
 }
 
 .student-tab {
   position: relative;
-  min-width: 160rpx;
-  height: 76rpx;
+  min-width: 270rpx;
+  height: 86rpx;
   margin: 0;
-  padding: 0 28rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
   border: 0;
-  border-radius: 0;
+  border-radius: 18rpx;
   background: transparent;
-  color: #7a899a;
-  font-size: 26rpx;
-  font-weight: 700;
-  line-height: 76rpx;
-  text-align: center;
+  color: #64758a;
+  font-size: 24rpx;
+  text-align: left;
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
 }
 
 .student-tab::after,
@@ -204,19 +211,79 @@
   display: none;
 }
 
-.student-tab-active {
-  color: #173a66;
-  font-weight: 900;
+.student-tab-index {
+  width: 44rpx;
+  height: 44rpx;
+  flex: none;
+  border: 1rpx solid #ccd9e6;
+  border-radius: 50%;
+  color: #7f91a5;
+  font-size: 19rpx;
+  font-weight: 800;
+  line-height: 42rpx;
+  text-align: center;
 }
 
-.student-tab-marker {
-  position: absolute;
-  left: 24rpx;
-  right: 24rpx;
-  bottom: -1rpx;
-  height: 6rpx;
-  border-radius: 6rpx 6rpx 0 0;
-  background: #2d8090;
+.student-tab-copy {
+  min-width: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3rpx;
+}
+
+.student-tab-name {
+  overflow: hidden;
+  color: inherit;
+  font-size: 27rpx;
+  font-weight: 850;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.student-tab-grade {
+  overflow: hidden;
+  color: #91a0b0;
+  font-size: 20rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.student-tab-check {
+  width: 34rpx;
+  height: 34rpx;
+  flex: none;
+  border-radius: 50%;
+  background: #5fb6bd;
+  color: #fff;
+  font-size: 21rpx;
+  font-weight: 900;
+  line-height: 34rpx;
+  text-align: center;
+}
+
+.student-tab-active {
+  background: #173a66;
+  box-shadow: 0 8rpx 18rpx rgba(23, 58, 102, .18);
+  color: #fff;
+}
+
+.student-tab-active .student-tab-index {
+  border-color: rgba(255, 255, 255, .35);
+  color: rgba(255, 255, 255, .78);
+}
+
+.student-tab-active .student-tab-grade {
+  color: rgba(255, 255, 255, .68);
+}
+
+.student-tab-active .student-tab-check {
+  background: #5fb6bd;
+}
+
+/* Keep the switcher compact on narrow phones while preserving two-finger scrolling. */
+@media (max-width: 360px) {
+  .student-tab { min-width: 244rpx; }
 }
 
 .student-card {

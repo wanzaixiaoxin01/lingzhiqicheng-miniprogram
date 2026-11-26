@@ -31,11 +31,19 @@
           <button
             wx:for="{{dashboard.students}}"
             wx:key="id"
+            wx:for-index="studentIndex"
             class="student-tab {{activeStudentId === item.id ? 'student-tab-active' : ''}}"
             data-student-id="{{item.id}}"
             aria-selected="{{activeStudentId === item.id}}"
             bindtap="selectStudent"
-          >{{item.name}}<text wx:if="{{activeStudentId === item.id}}" class="student-tab-marker"></text></button>
+          >
+            <text class="student-tab-index">0{{studentIndex + 1}}</text>
+            <view class="student-tab-copy">
+              <text class="student-tab-name">{{item.name}}</text>
+              <text class="student-tab-grade">{{item.grade}}</text>
+            </view>
+            <text wx:if="{{activeStudentId === item.id}}" class="student-tab-check">✓</text>
+          </button>
         </view>
       </scroll-view>
 
