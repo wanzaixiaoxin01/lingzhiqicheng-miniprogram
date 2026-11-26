@@ -23,6 +23,9 @@ test("profile supports phone authorisation, no-match and multiple-child states",
   assert.match(markup, /暂未查询到报名信息/);
   assert.match(markup, /wx:for="\{\{dashboard\.students\}\}"/);
   assert.match(markup, /data-student-id="\{\{item\.id\}\}"/);
+  assert.match(markup, /student-tab/);
+  assert.match(markup, /student-tab-active/);
+  assert.match(markup, /aria-selected/);
   assert.match(markup, /授权手机号，查看孩子成长记录/);
   assert.match(markup, /授权获取微信手机号/);
   assert.doesNotMatch(markup, /微信手机号登录/);
@@ -39,6 +42,7 @@ test("profile shows enrolment details and attendance timeline", () => {
   assert.match(markup, /attendance_period_label/);
   assert.match(styles, /\.attendance-timeline/);
   assert.match(styles, /\.student-switcher/);
+  assert.match(styles, /\.student-tab-active/);
 });
 
 test("profile de-emphasizes the expiry date without showing a duration", () => {

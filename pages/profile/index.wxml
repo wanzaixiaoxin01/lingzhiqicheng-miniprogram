@@ -27,14 +27,15 @@
   <block wx:elif="{{dashboard}}">
     <view wx:if="{{dashboard.students.length}}" class="dashboard-content">
       <scroll-view wx:if="{{dashboard.students.length > 1}}" class="student-switcher" scroll-x enhanced show-scrollbar="{{false}}">
-        <view class="student-switcher-inner">
+        <view class="student-switcher-inner" role="tablist" aria-label="选择孩子">
           <button
             wx:for="{{dashboard.students}}"
             wx:key="id"
-            class="student-chip {{activeStudentId === item.id ? 'student-chip-active' : ''}}"
+            class="student-tab {{activeStudentId === item.id ? 'student-tab-active' : ''}}"
             data-student-id="{{item.id}}"
+            aria-selected="{{activeStudentId === item.id}}"
             bindtap="selectStudent"
-          >{{item.name}}</button>
+          >{{item.name}}<text wx:if="{{activeStudentId === item.id}}" class="student-tab-marker"></text></button>
         </view>
       </scroll-view>
 

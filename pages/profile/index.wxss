@@ -172,37 +172,51 @@
 
 .student-switcher {
   width: 100%;
-  margin: 22rpx 0 16rpx;
+  margin: 4rpx 0 18rpx;
+  border-bottom: 1rpx solid #dbe5ef;
   white-space: nowrap;
 }
 
 .student-switcher-inner {
   display: inline-flex;
+  min-width: 100%;
 }
 
-.student-chip {
-  min-width: 150rpx;
-  height: 66rpx;
-  margin: 0 12rpx 0 0;
-  padding: 0 30rpx;
-  border: 1rpx solid #dbe3eb;
-  border-radius: 33rpx;
-  background: #ffffff;
-  color: #6d7d91;
-  font-size: 25rpx;
-  line-height: 66rpx;
+.student-tab {
+  position: relative;
+  min-width: 160rpx;
+  height: 76rpx;
+  margin: 0;
+  padding: 0 28rpx;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #7a899a;
+  font-size: 26rpx;
+  font-weight: 700;
+  line-height: 76rpx;
+  text-align: center;
 }
 
-.student-chip::after,
+.student-tab::after,
 .phone-auth-button::after,
 .state-button::after {
   display: none;
 }
 
-.student-chip-active {
-  border-color: #173a66;
-  background: #173a66;
-  color: #ffffff;
+.student-tab-active {
+  color: #173a66;
+  font-weight: 900;
+}
+
+.student-tab-marker {
+  position: absolute;
+  left: 24rpx;
+  right: 24rpx;
+  bottom: -1rpx;
+  height: 6rpx;
+  border-radius: 6rpx 6rpx 0 0;
+  background: #2d8090;
 }
 
 .student-card {
